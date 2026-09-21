@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Bookings & Travel Passes | SpidyWeb</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body style="background: var(--bg-main);">
+
+  <!-- Navigation Bar -->
+  <header class="navbar scrolled">
+    <div class="container navbar-inner">
+      <a href="index.html" class="logo">
+        <i class="fas fa-spider" style="color: var(--accent-coral);"></i>
+        <span>SpidyWeb</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html#featured-tours" class="nav-link">Packages <span class="nav-count-badge">16</span></a>
+        <div class="nav-dropdown-wrap" id="seasons-nav-wrap">
+          <a href="index.html#featured-tours" class="nav-link nav-dropdown-btn" id="nav-seasons-toggle">
+            <i class="far fa-calendar-alt" style="color: var(--accent-coral);"></i> Seasons <i class="fas fa-chevron-down nav-caret"></i>
+          </a>
+          <div class="nav-dropdown-panel" id="seasons-dropdown-menu">
+            <a href="index.html#featured-tours" class="dropdown-season-item" data-season="spring-summer">
+              <span class="season-badge-icon season-summer"><i class="fas fa-sun"></i></span>
+              <div class="season-text-col">
+                <strong>Spring & Summer (Mar - Jun)</strong>
+                <small>Himalayas, Kashmir, Switzerland & Bali</small>
+              </div>
+            </a>
+            <a href="index.html#featured-tours" class="dropdown-season-item" data-season="monsoon">
+              <span class="season-badge-icon season-monsoon"><i class="fas fa-cloud-showers-heavy"></i></span>
+              <div class="season-text-col">
+                <strong>Monsoon Rains (Jul - Sep)</strong>
+                <small>Kerala, Meghalaya Living Bridges & Munnar</small>
+              </div>
+            </a>
+            <a href="index.html#featured-tours" class="dropdown-season-item" data-season="autumn">
+              <span class="season-badge-icon season-autumn"><i class="fas fa-leaf"></i></span>
+              <div class="season-text-col">
+                <strong>Golden Autumn (Oct - Nov)</strong>
+                <small>Rajasthan Palaces, Varanasi & Nilgiris</small>
+              </div>
+            </a>
+            <a href="index.html#featured-tours" class="dropdown-season-item" data-season="winter">
+              <span class="season-badge-icon season-winter"><i class="fas fa-snowflake"></i></span>
+              <div class="season-text-col">
+                <strong>Winter Snow & Sun (Dec - Feb)</strong>
+                <small>Manali Snow, Dubai Desert & Goa Beaches</small>
+              </div>
+            </a>
+            <div style="border-top: 1px solid var(--border-light); margin-top: 4px; padding-top: 4px;">
+              <a href="index.html#featured-tours" class="dropdown-season-item" data-season="all" style="font-weight: 700; color: var(--accent-coral);">
+                <span class="season-badge-icon" style="background: rgba(255,90,95,0.1); color: var(--accent-coral);"><i class="fas fa-globe-americas"></i></span>
+                <div class="season-text-col">
+                  <strong>Browse All 16 Year-Round Stacks</strong>
+                  <small>View complete all-season collection</small>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <a href="index.html#destinations" class="nav-link">Destinations</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="my-bookings.html" class="nav-link active"><i class="fas fa-suitcase-rolling" style="font-size: 0.8rem;"></i> My Trips</a>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="user-profile-menu">
+          <div class="user-avatar-btn">
+            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80"
+              alt="Avatar">
+            <span>Krrish Modi</span>
+            <i class="fas fa-chevron-down" style="font-size: 0.7rem; opacity: 0.75;"></i>
+          </div>
+        </div>
+
+        <a href="admin/index.html" class="nav-admin-btn" title="Admin Portal">
+          <i class="fas fa-shield-alt"></i> <span>Admin Portal</span>
+        </a>
+
+        <button class="mobile-menu-btn" aria-label="Toggle Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- User Dashboard Content -->
+  <main style="padding: 120px 0 80px;">
+    <div class="container">
+
+      <!-- Welcome Header -->
+      <div
+        style="background: #ffffff; padding: 28px 32px; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); border: 1px solid var(--border-light); display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; flex-wrap: wrap; gap: 20px;">
+        <div style="display: flex; align-items: center; gap: 20px;">
+          <div class="avatar-change-wrapper" onclick="openAvatarModal()" title="Click to Change Profile Photo">
+            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80"
+              alt="Krrish Modi" id="dashboard-dp" class="user-avatar-img"
+              style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-coral);">
+            <div class="avatar-change-badge"><i class="fas fa-camera"></i></div>
+          </div>
+          <div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <h1 style="font-size: 1.6rem; color: var(--primary-navy); margin-bottom: 4px;">Welcome, Krrish Modi</h1>
+              <button onclick="openAvatarModal()" class="btn btn-outline btn-sm"
+                style="padding: 4px 10px; font-size: 0.75rem; border-color: var(--accent-coral); color: var(--accent-coral);">
+                <i class="fas fa-camera"></i> Change DP
+              </button>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">
+              <i class="fas fa-envelope"></i> modik3654@gmail.com &bull; <i class="fas fa-phone"></i> +91 98765 43210
+              &bull; <span class="badge badge-teal">Verified Member</span>
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <a href="index.html#featured-tours" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Book Another Tour
+          </a>
+        </div>
+      </div>
+
+      <!-- Bookings Section -->
+      <div
+        style="background: #ffffff; padding: 32px; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); border: 1px solid var(--border-light);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+          <h2 style="font-size: 1.3rem;"><i class="fas fa-plane-departure" style="color: var(--accent-coral);"></i> My
+            Confirmed Reservations</h2>
+          <span class="badge badge-gold">2 Active Bookings</span>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Booking Ref</th>
+                <th>Tour Package</th>
+                <th>Travel Date</th>
+                <th>Guests</th>
+                <th>Total Paid (INR)</th>
+                <th>Payment Mode</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span
+                    style="font-family: monospace; font-weight: 700; color: var(--accent-coral);">SPY-2026-7821</span>
+                </td>
+                <td>
+                  <strong>Kerala Backwaters Houseboat & Munnar Tea Hills</strong>
+                  <div style="font-size: 0.8rem; color: var(--text-muted);">Munnar & Alleppey (6 Days)</div>
+                </td>
+                <td>Sep 15, 2026</td>
+                <td>2 Adults</td>
+                <td><strong style="color: var(--accent-green); font-size: 1.05rem;">₹49,998</strong></td>
+                <td>UPI / GPay</td>
+                <td><span class="badge badge-green"><i class="fas fa-check-circle"></i> Confirmed</span></td>
+                <td>
+                  <div style="display: flex; gap: 8px;">
+                    <button class="btn btn-outline-dark btn-sm"
+                      onclick="showVoucher('SPY-2026-7821', 'Kerala Backwaters Luxury Houseboat & Munnar Tea Hills', 'Sep 15, 2026', '2 Adults', '₹49,998', 'UPI / GPay', '1')">
+                      <i class="fas fa-ticket-alt"></i> E-Ticket
+                    </button>
+                    <button class="btn btn-outline btn-sm" style="color: #1a73e8; border-color: #93c5fd;"
+                      onclick="showDirectionsModal('1')">
+                      <i class="fas fa-location-arrow"></i> Directions
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td><span
+                    style="font-family: monospace; font-weight: 700; color: var(--accent-coral);">SPY-2026-9043</span>
+                </td>
+                <td>
+                  <strong>Ladakh Himalayan Passes, Pangong Lake & Nubra Dunes</strong>
+                  <div style="font-size: 0.8rem; color: var(--text-muted);">Leh & Pangong Tso (7 Days)</div>
+                </td>
+                <td>Oct 05, 2026</td>
+                <td>2 Adults</td>
+                <td><strong style="color: var(--accent-green); font-size: 1.05rem;">₹77,000</strong></td>
+                <td>Credit Card</td>
+                <td><span class="badge badge-green"><i class="fas fa-check-circle"></i> Confirmed</span></td>
+                <td>
+                  <div style="display: flex; gap: 8px;">
+                    <button class="btn btn-outline-dark btn-sm"
+                      onclick="showVoucher('SPY-2026-9043', 'Ladakh Himalayan Passes & Pangong Lake', 'Oct 05, 2026', '2 Adults', '₹77,000', 'Credit Card', '2')">
+                      <i class="fas fa-ticket-alt"></i> E-Ticket
+                    </button>
+                    <button class="btn btn-outline btn-sm" style="color: #1a73e8; border-color: #93c5fd;"
+                      onclick="showDirectionsModal('2')">
+                      <i class="fas fa-location-arrow"></i> Directions
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Voucher Viewer Modal -->
+  <div class="modal-backdrop" id="voucher-view-modal">
+    <div class="modal-card" style="max-width: 650px;">
+      <div class="modal-header">
+        <h3 class="modal-title">SpidyWeb Travel Pass & Directions</h3>
+        <button class="modal-close"
+          onclick="document.getElementById('voucher-view-modal').classList.remove('active');">&times;</button>
+      </div>
+
+      <div class="modal-body" id="voucher-content">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container" style="text-align: center;">
+      <p>&copy; 2026 SpidyWeb Tours & Travels. Customer account: Krrish Modi (modik3654@gmail.com).</p>
+    </div>
+  </footer>
+
+  <script>
+    function showVoucher(ref, title, date, guests, amount, method, pkgId) {
+      const modal = document.getElementById('voucher-view-modal');
+      const content = document.getElementById('voucher-content');
+      
+      const dataset = window.TOUR_DESTINATIONS_DATA || {};
+      const pkg = dataset[pkgId || '1'] || dataset[1] || {};
+      const resort = (pkg.hotels && pkg.hotels[0]) ? pkg.hotels[0] : {
+        name: 'Tea Valley Luxury Mountain Resort',
+        tier: 'Deluxe 4-Star Resort',
+        location: 'Pothamedu Viewpoint, Munnar',
+        image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80',
+        checkIn: '2:00 PM'
+      };
+      const lat = (pkg.geo && pkg.geo.lat) ? pkg.geo.lat : 10.0889;
+      const lng = (pkg.geo && pkg.geo.lng) ? pkg.geo.lng : 77.0595;
+      const airport = (pkg.geo && pkg.geo.airport) ? pkg.geo.airport : 'Nearest International Airport';
+      const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}&travelmode=driving`;
+
+      content.innerHTML = `
+      <div class="voucher-card">
+        <div class="voucher-header">
+          <div>
+            <span class="badge badge-green"><i class="fas fa-check-circle"></i> Booking Confirmed</span>
+            <h3 style="margin-top: 6px; font-size: 1.3rem;">SpidyWeb Travel Pass</h3>
+          </div>
+          <div class="voucher-ref">${ref}</div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; font-size: 0.9rem;">
+          <div>
+            <strong style="color: var(--text-muted);">Lead Traveler:</strong>
+            <p style="font-weight: 700; font-size: 1rem; color: var(--primary-navy);">Krrish Modi</p>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">modik3654@gmail.com</span>
+          </div>
+          <div>
+            <strong style="color: var(--text-muted);">Tour Package:</strong>
+            <p style="font-weight: 700; color: var(--primary-navy);">${title}</p>
+          </div>
+          <div>
+            <strong style="color: var(--text-muted);">Travel Date:</strong>
+            <p style="font-weight: 600;">${date}</p>
+          </div>
+          <div>
+            <strong style="color: var(--text-muted);">Guests:</strong>
+            <p style="font-weight: 600;">${guests}</p>
+          </div>
+          <div>
+            <strong style="color: var(--text-muted);">Payment Mode:</strong>
+            <p style="font-weight: 600;">${method}</p>
+          </div>
+          <div>
+            <strong style="color: var(--text-muted);">Total Amount (INR):</strong>
+            <p style="font-weight: 800; color: var(--accent-green); font-size: 1.25rem;">${amount}</p>
+          </div>
+        </div>
+
+        <!-- POST-PAYMENT RESORT DIRECTIONS -->
+        <div class="resort-directions-card" style="margin: 20px 0;">
+          <div class="resort-directions-header">
+            <div style="display: flex; align-items: center; gap: 14px;">
+              <img src="${resort.image}" alt="${resort.name}" class="resort-thumb-img">
+              <div>
+                <span class="badge badge-teal" style="font-size: 0.72rem; padding: 2px 8px;"><i class="fas fa-hotel"></i> ${resort.tier}</span>
+                <h4 style="font-size: 1.15rem; color: var(--primary-navy); margin-top: 4px; margin-bottom: 2px;">${resort.name}</h4>
+                <p style="font-size: 0.82rem; color: var(--text-muted);"><i class="fas fa-map-marker-alt" style="color: var(--accent-coral);"></i> ${resort.location}</p>
+              </div>
+            </div>
+            <div style="text-align: right;">
+              <span style="font-size: 0.78rem; color: var(--text-muted); display: block;">Check-in</span>
+              <strong style="font-size: 0.95rem; color: var(--primary-navy);">${resort.checkIn || '2:00 PM'}</strong>
+            </div>
+          </div>
+
+          <div class="route-map-visual">
+            <div class="route-step-row">
+              <div class="route-node">
+                <div class="route-node-icon"><i class="fas fa-plane-arrival"></i></div>
+                <div class="route-node-label">Pickup Point</div>
+                <div class="route-node-sub">${airport.split('-')[0].trim()}</div>
+              </div>
+              <div class="route-line-connector"></div>
+              <div class="route-node">
+                <div class="route-node-icon"><i class="fas fa-car-side"></i></div>
+                <div class="route-node-label">Private Transit</div>
+                <div class="route-node-sub">Dedicated Chauffeur</div>
+              </div>
+              <div class="route-line-connector"></div>
+              <div class="route-node">
+                <div class="route-node-icon hotel"><i class="fas fa-bed"></i></div>
+                <div class="route-node-label">Resort Porch</div>
+                <div class="route-node-sub">${resort.name.split(' ')[0]} Reception</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="directions-action-bar">
+            <div class="directions-travel-time">
+              <i class="fas fa-route"></i>
+              <span>GPS: ${lat.toFixed(4)}° N, ${lng.toFixed(4)}° E</span>
+            </div>
+            <a href="${googleMapsUrl}" target="_blank" rel="noopener" class="btn-google-maps">
+              <i class="fab fa-google"></i> Open in Google Maps
+            </a>
+          </div>
+
+          <div class="driver-helper-box">
+            <i class="fas fa-taxi"></i>
+            <div>
+              <strong>Chauffeur & Cab Route Guidance:</strong>
+              <p style="margin-top: 2px; margin-bottom: 0;">Show this screen to your airport cab or SpidyWeb private driver. The Google Maps link directs precisely to the resort front desk.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: var(--bg-main); padding: 14px; border-radius: var(--radius-sm); font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px; border-left: 3px solid var(--accent-coral);">
+          <i class="fas fa-qrcode" style="color: var(--accent-coral); font-size: 1.1rem; margin-right: 6px;"></i> E-Ticket Voucher registered for <strong>Krrish Modi</strong>. Valid for hotel check-in and local sightseeing.
+        </div>
+
+        <div style="display: flex; gap: 12px; justify-content: flex-end; flex-wrap: wrap;">
+          <a href="${googleMapsUrl}" target="_blank" rel="noopener" class="btn btn-outline-dark">
+            <i class="fas fa-location-arrow"></i> Google Maps Route
+          </a>
+          <button class="btn btn-outline-dark" onclick="document.getElementById('voucher-view-modal').classList.remove('active');">
+            Close
+          </button>
+          <button class="btn btn-primary" onclick="window.print()">
+            <i class="fas fa-print"></i> Print Voucher Pass
+          </button>
+        </div>
+      </div>
+      `;
+      modal.classList.add('active');
+    }
+
+    function showDirectionsModal(pkgId) {
+      const dataset = window.TOUR_DESTINATIONS_DATA || {};
+      const pkg = dataset[pkgId] || dataset[1] || {};
+      const resort = (pkg.hotels && pkg.hotels[0]) ? pkg.hotels[0] : {
+        name: 'Tea Valley Luxury Mountain Resort',
+        tier: 'Deluxe 4-Star Resort',
+        location: 'Pothamedu Viewpoint, Munnar',
+        image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80',
+        checkIn: '2:00 PM'
+      };
+
+      const lat = (pkg.geo && pkg.geo.lat) ? pkg.geo.lat : 10.0889;
+      const lng = (pkg.geo && pkg.geo.lng) ? pkg.geo.lng : 77.0595;
+      const airport = (pkg.geo && pkg.geo.airport) ? pkg.geo.airport : 'Nearest International Airport';
+      const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}&travelmode=driving`;
+
+      const modal = document.getElementById('voucher-view-modal');
+      const content = document.getElementById('voucher-content');
+      content.innerHTML = `
+        <div class="resort-directions-card" style="border: none; box-shadow: none; padding: 0;">
+          <div class="resort-directions-header">
+            <div style="display: flex; align-items: center; gap: 14px;">
+              <img src="${resort.image}" alt="${resort.name}" class="resort-thumb-img" style="width: 80px; height: 80px;">
+              <div>
+                <span class="badge badge-teal" style="font-size: 0.72rem; padding: 2px 8px;"><i class="fas fa-hotel"></i> ${resort.tier}</span>
+                <h3 style="font-size: 1.25rem; color: var(--primary-navy); margin-top: 4px; margin-bottom: 2px;">${resort.name}</h3>
+                <p style="font-size: 0.84rem; color: var(--text-muted);"><i class="fas fa-map-marker-alt" style="color: var(--accent-coral);"></i> ${resort.location}</p>
+              </div>
+            </div>
+            <div style="text-align: right;">
+              <span style="font-size: 0.78rem; color: var(--text-muted); display: block;">Check-in Time</span>
+              <strong style="font-size: 1rem; color: var(--primary-navy);">${resort.checkIn || '2:00 PM'}</strong>
+            </div>
+          </div>
+
+          <div class="route-map-visual" style="margin: 20px 0;">
+            <div class="route-step-row">
+              <div class="route-node">
+                <div class="route-node-icon"><i class="fas fa-plane-arrival"></i></div>
+                <div class="route-node-label">Arrival Hub</div>
+                <div class="route-node-sub">${airport.split('-')[0].trim()}</div>
+              </div>
+              <div class="route-line-connector"></div>
+              <div class="route-node">
+                <div class="route-node-icon"><i class="fas fa-car-side"></i></div>
+                <div class="route-node-label">Chauffeur Transfer</div>
+                <div class="route-node-sub">Private AC Sedan</div>
+              </div>
+              <div class="route-line-connector"></div>
+              <div class="route-node">
+                <div class="route-node-icon hotel"><i class="fas fa-bed"></i></div>
+                <div class="route-node-label">Resort Entrance</div>
+                <div class="route-node-sub">${resort.name.split(' ')[0]} Reception</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="directions-action-bar">
+            <div class="directions-travel-time">
+              <i class="fas fa-route"></i>
+              <span>GPS Coordinates: ${lat.toFixed(4)}° N, ${lng.toFixed(4)}° E</span>
+            </div>
+            <a href="${googleMapsUrl}" target="_blank" rel="noopener" class="btn-google-maps">
+              <i class="fab fa-google"></i> Start GPS Navigation
+            </a>
+          </div>
+
+          <div class="driver-helper-box" style="margin-bottom: 20px;">
+            <i class="fas fa-taxi"></i>
+            <div>
+              <strong>Driver & Cab Navigation Card:</strong>
+              <p style="margin-top: 2px; margin-bottom: 0;">Show this screen to your taxi or chauffeur upon airport arrival. Turn-by-turn route guide leads right to the hotel lobby reception.</p>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 12px; justify-content: flex-end;">
+            <button class="btn btn-outline-dark" onclick="document.getElementById('voucher-view-modal').classList.remove('active');">
+              Close
+            </button>
+            <a href="${googleMapsUrl}" target="_blank" rel="noopener" class="btn btn-primary">
+              <i class="fas fa-location-arrow"></i> Open Google Maps
+            </a>
+          </div>
+        </div>
+      `;
+      modal.classList.add('active');
+    }
+  </script>
+
+  <!-- Profile Photo (DP) Changer Modal -->
+  <div class="modal-backdrop" id="avatar-modal">
+    <div class="modal-card" style="max-width: 500px;">
+      <div class="modal-header">
+        <h3 class="modal-title"><i class="fas fa-camera" style="color: var(--accent-coral);"></i> Change Profile Photo (DP)</h3>
+        <button class="modal-close" onclick="closeAvatarModal()">&times;</button>
+      </div>
+
+      <div class="modal-body" style="text-align: center;">
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Upload a custom photo from your device or choose from curated traveler avatars.</p>
+
+        <!-- Current DP Preview -->
+        <div style="margin-bottom: 24px;">
+          <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80" alt="Current DP" class="user-avatar-img" style="width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-coral); box-shadow: var(--shadow-md);">
+          <p style="font-size: 0.85rem; font-weight: 700; color: var(--primary-navy); margin-top: 8px;">Krrish Modi</p>
+        </div>
+
+        <!-- File Upload Button -->
+        <div style="margin-bottom: 24px;">
+          <label for="avatar-file-input" class="btn btn-primary btn-block" style="cursor: pointer;">
+            <i class="fas fa-upload"></i> Upload Photo From Computer
+          </label>
+          <input type="file" id="avatar-file-input" accept="image/*" style="display: none;">
+        </div>
+
+        <div style="border-top: 1px solid var(--border-light); padding-top: 18px;">
+          <p style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px;">Or Choose Preset Avatar</p>
+          <div class="avatar-preset-grid" style="justify-items: center;">
+            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80" class="avatar-preset-item" onclick="selectPresetAvatar(this.src)" alt="Preset 1">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" class="avatar-preset-item" onclick="selectPresetAvatar(this.src)" alt="Preset 2">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" class="avatar-preset-item" onclick="selectPresetAvatar(this.src)" alt="Preset 3">
+            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80" class="avatar-preset-item" onclick="selectPresetAvatar(this.src)" alt="Preset 4">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container"></div>
+  <script src="assets/js/tour-dataset.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tour Package Details | SpidyWeb Tours & Travels</title>
+
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar scrolled">
+    <div class="container navbar-inner">
+      <a href="index.html" class="logo">
+        <i class="fas fa-spider" style="color: var(--accent-coral);"></i>
+        <span>SpidyWeb</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html#featured-tours" class="nav-link">Packages <span class="nav-count-badge">16</span></a>
+        <div class="nav-dropdown-wrap" id="seasons-nav-wrap">
+          <a href="index.html#featured-tours" class="nav-link nav-dropdown-btn" id="nav-seasons-toggle">
+            <i class="far fa-calendar-alt" style="color: var(--accent-coral);"></i> Seasons <i class="fas fa-chevron-down nav-caret"></i>
+          </a>
+          <div class="nav-dropdown-panel" id="seasons-dropdown-menu">
+            <a href="index.html#featured-tours" class="dropdown-season-item" data-season="spring-summer">
+              <span class="season-badge-icon season-summer"><i class="fas fa-sun"></i></span>
+              <div class="season-text-col">
+                <strong>Spring & Summer (Mar - Jun)</strong>
+                <small>Himalayas, Kashmir, Switzerland & Bali</small>
+              </div>
+            </a>
+            <a href="index.html#featured-tours" class="dropdown-season-item" data-season="monsoon">
+              <span class="season-badge-icon season-monsoon"><i class="fas fa-cloud-showers-heavy"></i></span>
+              <div class="season-text-col">
+                <strong>Monsoon Rains (Jul - Sep)</strong>
+                <small>Kerala, Meghalaya Living Bridges & Munnar</small>
+              </div>
+            </a>
+            <a href="index.html#featured-tours" class="dropdown-season-item" data-season="autumn">
+              <span class="season-badge-icon season-autumn"><i class="fas fa-leaf"></i></span>
+              <div class="season-text-col">
+                <strong>Golden Autumn (Oct - Nov)</strong>
+                <small>Rajasthan Palaces, Varanasi & Nilgiris</small>
+              </div>
+            </a>
+            <a href="index.html#featured-tours" class="dropdown-season-item" data-season="winter">
+              <span class="season-badge-icon season-winter"><i class="fas fa-snowflake"></i></span>
+              <div class="season-text-col">
+                <strong>Winter Snow & Sun (Dec - Feb)</strong>
+                <small>Manali Snow, Dubai Desert & Goa Beaches</small>
+              </div>
+            </a>
+            <div style="border-top: 1px solid var(--border-light); margin-top: 4px; padding-top: 4px;">
+              <a href="index.html#featured-tours" class="dropdown-season-item" data-season="all" style="font-weight: 700; color: var(--accent-coral);">
+                <span class="season-badge-icon" style="background: rgba(255,90,95,0.1); color: var(--accent-coral);"><i class="fas fa-globe-americas"></i></span>
+                <div class="season-text-col">
+                  <strong>Browse All 16 Year-Round Stacks</strong>
+                  <small>View complete all-season collection</small>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <a href="index.html#destinations" class="nav-link">Destinations</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="my-bookings.html" class="nav-link"><i class="fas fa-suitcase-rolling" style="font-size: 0.8rem;"></i> My Trips</a>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="user-profile-menu">
+          <div class="user-avatar-btn">
+            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80" alt="Krrish Modi" class="user-avatar-img">
+            <span>Krrish Modi</span>
+            <i class="fas fa-chevron-down" style="font-size: 0.7rem; opacity: 0.75;"></i>
+          </div>
+          <div class="user-dropdown">
+            <div style="padding: 12px 18px; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; justify-content: space-between;">
+              <div>
+                <p style="font-weight: 700; font-size: 0.9rem;">Krrish Modi</p>
+                <p style="font-size: 0.75rem; color: var(--text-muted);">modik3654@gmail.com</p>
+              </div>
+              <button onclick="openAvatarModal()" class="btn btn-outline btn-sm" style="padding: 4px 8px; font-size: 0.75rem;" title="Change Profile Photo">
+                <i class="fas fa-camera"></i> Change DP
+              </button>
+            </div>
+            <a href="my-bookings.html" class="dropdown-item">
+              <i class="fas fa-suitcase-rolling"></i> My Bookings
+            </a>
+            <a href="admin/index.html" class="dropdown-item">
+              <i class="fas fa-chart-line"></i> Admin Dashboard
+            </a>
+            <a href="javascript:void(0)" onclick="openAvatarModal()" class="dropdown-item">
+              <i class="fas fa-image"></i> Change Profile Photo
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="login.html" class="dropdown-item" style="color: #ef4444;">
+              <i class="fas fa-sign-out-alt"></i> Logout / Switch User
+            </a>
+          </div>
+        </div>
+
+        <a href="admin/index.html" class="nav-admin-btn" title="Admin Portal">
+          <i class="fas fa-shield-alt"></i> <span>Admin Portal</span>
+        </a>
+
+        <button class="mobile-menu-btn" aria-label="Toggle Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Package Details Hero -->
+  <section class="details-hero">
+    <div class="container">
+      <div class="details-header-content">
+        <div class="details-meta-top">
+          <span class="badge badge-coral"><i class="fas fa-fire"></i> Best Seller India</span>
+          <span class="badge badge-teal"><i class="fas fa-om"></i> Incredible India</span>
+          <span class="badge badge-gold"><i class="fas fa-star"></i> 4.96 (68 Verified Reviews)</span>
+        </div>
+
+        <h1 class="details-title">Loading Tour Package Details...</h1>
+
+        <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap; color: rgba(255, 255, 255, 0.9); font-size: 0.95rem;">
+          <div><i class="fas fa-map-marker-alt" style="color: var(--accent-coral);"></i> India</div>
+          <div><i class="far fa-clock" style="color: var(--accent-teal);"></i> 6 Days / 5 Nights</div>
+          <div><i class="fas fa-users" style="color: var(--accent-gold);"></i> Max 12 Travelers</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Details Content Layout -->
+  <section class="details-section" style="padding: 40px 0 80px;">
+    <div class="container">
+      
+      <!-- Quick Facts Bar -->
+      <div class="quick-facts-bar" id="pkg-quick-facts">
+        <!-- Loaded dynamically from dataset -->
+      </div>
+
+      <div class="details-layout">
+        
+        <!-- Left Main Content Area -->
+        <div>
+          <!-- Photo Gallery Grid with Lightbox -->
+          <div class="details-gallery">
+            <div class="gallery-main">
+              <img src="" alt="Destination Main Photo" style="cursor: pointer;">
+            </div>
+            <div class="gallery-thumbs">
+              <!-- Loaded dynamically from dataset -->
+            </div>
+          </div>
+
+          <!-- Sticky Stack Tab Bar -->
+          <div class="stack-tabs-container">
+            <nav class="stack-nav-tabs">
+              <button class="stack-tab-btn active" data-tab="overview">
+                <i class="fas fa-info-circle"></i> Overview
+              </button>
+              <button class="stack-tab-btn" data-tab="attractions">
+                <i class="fas fa-landmark"></i> Sightseeing (Places)
+              </button>
+              <button class="stack-tab-btn" data-tab="hotels">
+                <i class="fas fa-hotel"></i> Hotels & Stays
+              </button>
+              <button class="stack-tab-btn" data-tab="itinerary">
+                <i class="fas fa-route"></i> Day-by-Day Itinerary
+              </button>
+              <button class="stack-tab-btn" data-tab="activities">
+                <i class="fas fa-hiking"></i> Activities
+              </button>
+              <button class="stack-tab-btn" data-tab="cuisine">
+                <i class="fas fa-utensils"></i> Regional Food
+              </button>
+              <button class="stack-tab-btn" data-tab="essentials">
+                <i class="fas fa-suitcase-rolling"></i> Packing & Tips
+              </button>
+              <button class="stack-tab-btn" data-tab="inclusions">
+                <i class="fas fa-clipboard-check"></i> Inclusions & Cabs
+              </button>
+              <button class="stack-tab-btn" data-tab="reviews">
+                <i class="fas fa-star"></i> Reviews
+              </button>
+            </nav>
+          </div>
+
+          <!-- Tab Panes -->
+
+          <!-- 1. Overview Tab -->
+          <div class="stack-tab-pane active" id="tab-pane-overview">
+            <div class="details-block">
+              <h2 class="details-heading"><i class="fas fa-compass" style="color: var(--accent-coral);"></i> Destination Overview</h2>
+              <p id="pkg-subtitle-text" style="font-weight: 600; font-size: 1.05rem; color: var(--primary-navy); margin-bottom: 12px;"></p>
+              <p id="pkg-overview-text" style="color: var(--text-muted); line-height: 1.8; margin-bottom: 24px;">Loading overview...</p>
+
+              <h3 style="font-size: 1.15rem; margin-bottom: 16px; color: var(--primary-navy);">Key Tour Highlights:</h3>
+              <ul id="pkg-highlights-list" style="list-style: none; padding: 0;">
+                <!-- Loaded dynamically -->
+              </ul>
+
+              <div id="pkg-connectivity-box"></div>
+            </div>
+          </div>
+
+          <!-- 2. Attractions Tab (Places Stack) -->
+          <div class="stack-tab-pane" id="tab-pane-attractions">
+            <div class="details-block">
+              <h2 class="details-heading"><i class="fas fa-map-marked-alt" style="color: var(--accent-teal);"></i> Famous Sightseeing Spots (Places Stack)</h2>
+              <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 0.95rem;">
+                Curated attractions, national parks, historical monuments, and scenic viewpoints included in this tour.
+              </p>
+              <div class="attractions-grid" id="pkg-attractions-container">
+                <!-- Loaded dynamically -->
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Hotels Tab (Stay Stack) -->
+          <div class="stack-tab-pane" id="tab-pane-hotels">
+            <div class="details-block">
+              <h2 class="details-heading"><i class="fas fa-hotel" style="color: var(--accent-gold);"></i> Luxury Accommodations & Resorts (Stay Stack)</h2>
+              <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 0.95rem;">
+                Every stay is vetted for premium hygiene, panoramic location, authentic cuisine, and high-speed Wi-Fi.
+              </p>
+              <div class="hotels-grid" id="pkg-hotels-container">
+                <!-- Loaded dynamically -->
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Itinerary Tab (Schedule Stack) -->
+          <div class="stack-tab-pane" id="tab-pane-itinerary">
+            <div class="details-block">
+              <h2 class="details-heading"><i class="fas fa-calendar-alt" style="color: var(--accent-coral);"></i> Handcrafted Day-by-Day Itinerary</h2>
+              <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 0.95rem;">
+                Paced with morning excursions, afternoon leisure, and evening cultural activities with private vehicle transfers.
+              </p>
+              <div class="itinerary-timeline">
+                <!-- Loaded dynamically -->
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. Activities Tab -->
+          <div class="stack-tab-pane" id="tab-pane-activities">
+            <div class="details-block">
+              <h2 class="details-heading"><i class="fas fa-hiking" style="color: var(--accent-purple);"></i> Adventure & Cultural Experiences</h2>
+              <div class="activities-grid" id="pkg-activities-container">
+                <!-- Loaded dynamically -->
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. Cuisine Tab -->
+          <div class="stack-tab-pane" id="tab-pane-cuisine">
+            <div class="details-block">
+              <h2 class="details-heading"><i class="fas fa-utensils" style="color: var(--accent-gold);"></i> Regional Culinary Guide & Food Street Specialties</h2>
+              <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 0.95rem;">
+                Taste authentic local delicacies curated by culinary historians and local residents.
+              </p>
+              <div class="cuisine-grid" id="pkg-cuisine-container">
+                <!-- Loaded dynamically -->
+              </div>
+            </div>
+          </div>
+
+          <!-- 7. Travel Essentials Tab -->
+          <div class="stack-tab-pane" id="tab-pane-essentials">
+            <div class="details-block">
+              <h2 class="details-heading"><i class="fas fa-suitcase-rolling" style="color: var(--accent-coral);"></i> Travel Essentials & Packing Guide</h2>
+              <div class="essentials-grid" id="pkg-essentials-container">
+                <!-- Loaded dynamically -->
+              </div>
+            </div>
+          </div>
+
+          <!-- 8. Inclusions & Transport Tab -->
+          <div class="stack-tab-pane" id="tab-pane-inclusions">
+            <div class="details-block">
+              <h2 class="details-heading"><i class="fas fa-clipboard-check" style="color: var(--accent-green);"></i> What's Included & Transport Vehicle Standards</h2>
+
+              <div class="inc-exc-grid">
+                <div class="inc-card">
+                  <h4 class="inc-title"><i class="fas fa-check-circle" style="color: var(--accent-green);"></i> Included in Package:</h4>
+                  <ul class="inc-list" id="pkg-inclusions-list"></ul>
+                </div>
+
+                <div class="exc-card">
+                  <h4 class="exc-title"><i class="fas fa-times-circle" style="color: #ef4444;"></i> Excluded from Package:</h4>
+                  <ul class="exc-list" id="pkg-exclusions-list"></ul>
+                </div>
+              </div>
+
+              <div id="pkg-transport-specs"></div>
+            </div>
+          </div>
+
+          <!-- 9. Reviews Tab -->
+          <div class="stack-tab-pane" id="tab-pane-reviews">
+            <div class="details-block">
+              <h2 class="details-heading"><i class="fas fa-star" style="color: var(--accent-gold);"></i> Verified Traveler Testimonials</h2>
+              <div id="pkg-reviews-container">
+                <!-- Loaded dynamically -->
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Sticky Booking Card & Dynamic Live Calculator -->
+        <div>
+          <div class="booking-widget-card" style="position: sticky; top: 96px;">
+            <div class="widget-price-wrap">
+              <span class="widget-price-label">Price per person</span>
+              <div>
+                <span class="widget-price-val">₹24,999</span>
+                <span class="widget-price-orig">₹29,999</span>
+              </div>
+            </div>
+
+            <div style="background: rgba(0, 180, 216, 0.08); padding: 10px 14px; border-radius: var(--radius-sm); margin-bottom: 18px; font-size: 0.82rem; color: var(--accent-teal);">
+              <i class="fas fa-shield-alt"></i> <strong id="widget-emi-text">No-cost EMI available in Indian Rupees (₹).</strong>
+            </div>
+
+            <div class="widget-form-group">
+              <label class="widget-label"><i class="fas fa-map-marker-alt"></i> Destination</label>
+              <div id="widget-destination-name" style="font-weight: 700; color: var(--primary-navy); padding: 10px; background: var(--bg-main); border-radius: var(--radius-sm); border: 1px solid var(--border-light);">Loading...</div>
+            </div>
+
+            <!-- Dynamic Hotel Tier Selector -->
+            <div class="tier-selector">
+              <label class="tier-selector-label"><i class="fas fa-bed"></i> Select Accommodation Tier</label>
+              <div class="tier-options-grid">
+                <div class="tier-btn" data-tier="standard">
+                  <span class="tier-btn-name">Standard</span>
+                  <span class="tier-btn-price" id="tier-price-standard">₹19,999</span>
+                </div>
+                <div class="tier-btn selected" data-tier="deluxe">
+                  <span class="tier-btn-name">Deluxe 4★</span>
+                  <span class="tier-btn-price" id="tier-price-deluxe">₹24,999</span>
+                </div>
+                <div class="tier-btn" data-tier="luxury">
+                  <span class="tier-btn-name">Luxury 5★</span>
+                  <span class="tier-btn-price" id="tier-price-luxury">₹34,999</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Live Guest Counters -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+              <div>
+                <label class="widget-label" style="font-size: 0.8rem;">Adults (12+)</label>
+                <div class="guest-counter" style="padding: 4px 8px;">
+                  <button type="button" class="counter-btn" id="calc-adult-dec">-</button>
+                  <span class="counter-val" id="calc-adult-val">1</span>
+                  <button type="button" class="counter-btn" id="calc-adult-inc">+</button>
+                </div>
+              </div>
+              <div>
+                <label class="widget-label" style="font-size: 0.8rem;">Children (2-11)</label>
+                <div class="guest-counter" style="padding: 4px 8px;">
+                  <button type="button" class="counter-btn" id="calc-child-dec">-</button>
+                  <span class="counter-val" id="calc-child-val">0</span>
+                  <button type="button" class="counter-btn" id="calc-child-inc">+</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Live Calculated Total Box -->
+            <div class="calculator-total-box">
+              <div class="calculator-row">
+                <span style="font-size: 0.85rem; color: var(--text-muted);">Estimated Total (INR):</span>
+                <strong id="calc-grand-total" style="font-size: 1.25rem; color: var(--accent-coral); font-family: var(--font-heading);">₹26,249</strong>
+              </div>
+              <div id="calc-breakdown-text" style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">1 Adult (DELUXE Stay) + 5% GST</div>
+            </div>
+
+            <button type="button" class="btn btn-primary btn-block btn-lg btn-open-booking" id="btn-details-book" style="margin-top: 10px;">
+              <i class="fas fa-bolt"></i> Proceed to Instant Booking
+            </button>
+
+            <div style="text-align: center; margin-top: 12px; font-size: 0.78rem; color: var(--text-muted);">
+              <i class="fas fa-lock"></i> 256-Bit SSL Encrypted &bull; 100% Refund Policy
+            </div>
+
+            <!-- Dedicated Tour Escort Badge -->
+            <div id="pkg-tour-escort"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Related Destination Stacks -->
+      <div style="margin-top: 60px;">
+        <div class="section-header" style="text-align: left; margin-bottom: 24px;">
+          <span class="section-subtitle">More Destinations to Explore</span>
+          <h2 class="section-title">Other Iconic Destination Stacks</h2>
+        </div>
+        <div class="packages-grid" id="related-stacks-grid">
+          <!-- Loaded dynamically -->
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Fullscreen Lightbox Modal -->
+  <div class="lightbox-modal" id="lightbox-modal">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightbox-close-btn">&times;</button>
+      <img src="" alt="" id="lightbox-target-img" class="lightbox-img">
+      <div class="lightbox-caption" id="lightbox-target-caption"></div>
+    </div>
+  </div>
+
+  <!-- Multi-Step Booking Modal -->
+  <div class="modal-backdrop" id="booking-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title" id="modal-pkg-title">Reserve Tour Package</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);" id="modal-pkg-dest">Destination</p>
+        </div>
+        <button class="modal-close" aria-label="Close Modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="step-progress">
+          <div class="step-item active">
+            <div class="step-bubble">1</div>
+            <span class="step-name">Dates & Guests</span>
+          </div>
+          <div class="step-item">
+            <div class="step-bubble">2</div>
+            <span class="step-name">Custom Add-ons</span>
+          </div>
+          <div class="step-item">
+            <div class="step-bubble">3</div>
+            <span class="step-name">Payment</span>
+          </div>
+        </div>
+
+        <!-- Step 1 -->
+        <div class="step-section" id="step-section-1">
+          <div class="widget-form-group">
+            <label class="widget-label"><i class="fas fa-calendar-alt"></i> Select Travel Departure Date</label>
+            <input type="date" class="widget-input" id="book-date" required>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;">
+            <div>
+              <label class="widget-label">Adults (Age 12+)</label>
+              <div class="guest-counter">
+                <button type="button" class="counter-btn" id="modal-adult-dec">-</button>
+                <span class="counter-val" id="modal-adult-val">1</span>
+                <button type="button" class="counter-btn" id="modal-adult-inc">+</button>
+              </div>
+            </div>
+
+            <div>
+              <label class="widget-label">Children (Age 2-11, 25% Off)</label>
+              <div class="guest-counter">
+                <button type="button" class="counter-btn" id="modal-child-dec">-</button>
+                <span class="counter-val" id="modal-child-val">0</span>
+                <button type="button" class="counter-btn" id="modal-child-inc">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-section" id="step-section-2" style="display: none;">
+          <h4 style="font-size: 1.05rem; margin-bottom: 14px;">Enhance Your Vacation Experience</h4>
+          
+          <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px;">
+            <label style="display: flex; align-items: center; justify-content: space-between; padding: 14px; border: 1px solid var(--border-light); border-radius: var(--radius-md); cursor: pointer; background: var(--bg-main);">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <input type="checkbox" class="addon-checkbox" data-name="Comprehensive Medical & Travel Insurance" data-price="2500" data-per-person="true" style="width: 18px; height: 18px; accent-color: var(--accent-coral);">
+                <div>
+                  <strong style="font-size: 0.95rem;">Comprehensive Travel & Medical Insurance</strong>
+                  <p style="font-size: 0.8rem; color: var(--text-muted);">100% trip cancellation and medical emergency protection.</p>
+                </div>
+              </div>
+              <span style="font-weight: 700; color: var(--primary-navy);">+₹2,500 / person</span>
+            </label>
+
+            <label style="display: flex; align-items: center; justify-content: space-between; padding: 14px; border: 1px solid var(--border-light); border-radius: var(--radius-md); cursor: pointer; background: var(--bg-main);">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <input type="checkbox" class="addon-checkbox" data-name="Airport VIP Fast-Track & Lounge Access" data-price="3500" data-per-person="false" style="width: 18px; height: 18px; accent-color: var(--accent-coral);">
+                <div>
+                  <strong style="font-size: 0.95rem;">Airport VIP Fast-Track & Lounge Access</strong>
+                  <p style="font-size: 0.8rem; color: var(--text-muted);">Priority baggage handling & arrival lounge buffet.</p>
+                </div>
+              </div>
+              <span style="font-weight: 700; color: var(--primary-navy);">+₹3,500 / trip</span>
+            </label>
+          </div>
+
+          <div class="widget-form-group">
+            <label class="widget-label">Special Requests & Dietary Preferences</label>
+            <textarea class="widget-input" id="special-requests" rows="2" placeholder="e.g. Vegetarian/Jain food, flower decoration, oxygen support"></textarea>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-section" id="step-section-3" style="display: none;">
+          <h4 style="font-size: 1.05rem; margin-bottom: 14px;">Select Secure Payment Method</h4>
+          <div class="payment-methods-grid">
+            <div class="payment-option selected" data-method="UPI / GPay / PhonePe">
+              <i class="fas fa-qrcode"></i>
+              <span style="font-weight: 600; font-size: 0.85rem;">Instant UPI / QR</span>
+            </div>
+            <div class="payment-option" data-method="Credit / Debit Card">
+              <i class="fas fa-credit-card"></i>
+              <span style="font-weight: 600; font-size: 0.85rem;">Card Payment</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="price-breakdown">
+          <div class="breakdown-row">
+            <span>Tour Package Subtotal:</span>
+            <span id="summary-subtotal">₹0</span>
+          </div>
+          <div class="breakdown-row">
+            <span>GST & Tourism Fees (5%):</span>
+            <span id="summary-taxes">₹0</span>
+          </div>
+          <div class="breakdown-row">
+            <span>Custom Upgrades & Add-ons:</span>
+            <span id="summary-addons">₹0</span>
+          </div>
+          <div class="breakdown-row total">
+            <span>Total Payable Amount (INR):</span>
+            <span id="summary-grand-total" style="color: var(--accent-coral);">₹0</span>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 24px;" class="modal-footer-nav">
+          <button type="button" class="btn btn-outline-dark" id="btn-step-prev" style="display: none;"><i class="fas fa-arrow-left"></i> Back</button>
+          <button type="button" class="btn btn-primary" id="btn-step-next" style="margin-left: auto;">Continue <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Profile Photo (DP) Changer Modal -->
+  <div class="modal-backdrop" id="avatar-modal">
+    <div class="modal-card" style="max-width: 500px;">
+      <div class="modal-header">
+        <h3 class="modal-title"><i class="fas fa-camera" style="color: var(--accent-coral);"></i> Change Profile Photo (DP)</h3>
+        <button class="modal-close" onclick="closeAvatarModal()">&times;</button>
+      </div>
+
+      <div class="modal-body" style="text-align: center;">
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Upload a custom photo from your device or choose from curated traveler avatars.</p>
+
+        <div style="margin-bottom: 24px;">
+          <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80" alt="Current DP" class="user-avatar-img" style="width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-coral); box-shadow: var(--shadow-md);">
+          <p style="font-size: 0.85rem; font-weight: 700; color: var(--primary-navy); margin-top: 8px;">Krrish Modi</p>
+        </div>
+
+        <div style="margin-bottom: 24px;">
+          <label for="avatar-file-input" class="btn btn-primary btn-block" style="cursor: pointer;">
+            <i class="fas fa-upload"></i> Upload Photo From Computer
+          </label>
+          <input type="file" id="avatar-file-input" accept="image/*" style="display: none;">
+        </div>
+
+        <div style="border-top: 1px solid var(--border-light); padding-top: 18px;">
+          <p style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px;">Or Choose Preset Avatar</p>
+          <div class="avatar-preset-grid" style="justify-items: center;">
+            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80" class="avatar-preset-item" onclick="selectPresetAvatar(this.src)" alt="Preset 1">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" class="avatar-preset-item" onclick="selectPresetAvatar(this.src)" alt="Preset 2">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" class="avatar-preset-item" onclick="selectPresetAvatar(this.src)" alt="Preset 3">
+            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80" class="avatar-preset-item" onclick="selectPresetAvatar(this.src)" alt="Preset 4">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container" style="text-align: center;">
+      <p>&copy; 2026 SpidyWeb Tours & Travels Inc. Developed by Krrish Modi (modik3654@gmail.com).</p>
+    </div>
+  </footer>
+
+  <div class="toast-container"></div>
+  <script src="assets/js/tour-dataset.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/booking.js"></script>
+  <script src="assets/js/package-details.js"></script>
+</body>
+</html>

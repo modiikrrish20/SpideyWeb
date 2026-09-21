@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Bookings | SpidyWeb Admin</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body class="admin-body">
+
+  <aside class="admin-sidebar">
+    <div class="admin-brand">
+      <i class="fas fa-spider" style="color: var(--accent-coral);"></i>
+      <span>SpidyWeb Admin</span>
+    </div>
+
+    <nav class="admin-nav">
+      <a href="index.html" class="admin-nav-item">
+        <i class="fas fa-chart-pie"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="packages.html" class="admin-nav-item">
+        <i class="fas fa-map-marked-alt"></i>
+        <span>Tour Packages</span>
+      </a>
+      <a href="bookings.html" class="admin-nav-item active">
+        <i class="fas fa-calendar-check"></i>
+        <span>Bookings</span>
+      </a>
+      <a href="inquiries.html" class="admin-nav-item">
+        <i class="fas fa-envelope-open-text"></i>
+        <span>Inquiries</span>
+      </a>
+      <a href="../index.html" class="admin-nav-item">
+        <i class="fas fa-external-link-alt"></i>
+        <span>Live Website</span>
+      </a>
+    </nav>
+
+    <div class="admin-sidebar-footer">
+      <a href="../login.html" class="btn btn-outline btn-block btn-sm" style="border-color: rgba(255,255,255,0.2);">
+        <i class="fas fa-sign-out-alt"></i> Sign Out
+      </a>
+    </div>
+  </aside>
+
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <div class="admin-title-area">
+        <h1>Customer Bookings & Reservations (INR ₹)</h1>
+        <p>Manage verified travel bookings for Hiten, Shubham, Yug, Yakshraj, Dhyani & Krrish Modi.</p>
+      </div>
+
+      <div class="admin-top-actions">
+        <span class="badge badge-teal" style="font-size: 0.85rem; padding: 8px 16px;">
+          <i class="fas fa-user-shield"></i> Admin: Krrish Modi
+        </span>
+      </div>
+    </div>
+
+    <div class="admin-card">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Reference</th>
+            <th>Customer Name</th>
+            <th>Tour Package</th>
+            <th>Travel Date</th>
+            <th>Guests</th>
+            <th>Total Amount (INR)</th>
+            <th>Payment Mode</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 1. Krrish Modi -->
+          <tr>
+            <td><span style="font-family: monospace; font-weight: 700; color: var(--accent-coral);">SPY-2026-7821</span></td>
+            <td>
+              <strong>Krrish Modi</strong>
+              <div style="font-size: 0.8rem; color: var(--admin-muted);">modik3654@gmail.com</div>
+            </td>
+            <td>Kerala Backwaters Luxury Houseboat</td>
+            <td>Sep 15, 2026</td>
+            <td>2 Adults</td>
+            <td><strong style="color: var(--accent-green); font-size: 1.05rem;">₹49,998</strong></td>
+            <td><span class="badge badge-teal">UPI / GPay</span></td>
+            <td>
+              <select class="status-badge status-confirmed" style="border: none; cursor: pointer; font-weight: 700;">
+                <option value="confirmed" selected>Confirmed</option>
+                <option value="pending">Pending</option>
+                <option value="completed">Completed</option>
+                <option value="cancelled">Cancelled</option>
+              </select>
+            </td>
+          </tr>
+
+          <!-- 2. Hiten Patel -->
+          <tr>
+            <td><span style="font-family: monospace; font-weight: 700; color: var(--accent-coral);">SPY-2026-9043</span></td>
+            <td>
+              <strong>Hiten Patel</strong>
+              <div style="font-size: 0.8rem; color: var(--admin-muted);">hiten.patel@gmail.com</div>
+            </td>
+            <td>Ladakh Himalayan Passes & Pangong Lake</td>
+            <td>Oct 05, 2026</td>
+            <td>2 Adults</td>
+            <td><strong style="color: var(--accent-green); font-size: 1.05rem;">₹77,000</strong></td>
+            <td><span class="badge badge-teal">UPI / PhonePe</span></td>
+            <td>
+              <select class="status-badge status-confirmed" style="border: none; cursor: pointer; font-weight: 700;">
+                <option value="confirmed" selected>Confirmed</option>
+                <option value="pending">Pending</option>
+                <option value="completed">Completed</option>
+              </select>
+            </td>
+          </tr>
+
+          <!-- 3. Shubham Sharma -->
+          <tr>
+            <td><span style="font-family: monospace; font-weight: 700; color: var(--accent-coral);">SPY-2026-5120</span></td>
+            <td>
+              <strong>Shubham Sharma</strong>
+              <div style="font-size: 0.8rem; color: var(--admin-muted);">shubham.sharma@gmail.com</div>
+            </td>
+            <td>Goa Sun, Sand & Water Sports</td>
+            <td>Oct 12, 2026</td>
+            <td>4 Adults</td>
+            <td><strong style="color: var(--accent-green); font-size: 1.05rem;">₹75,996</strong></td>
+            <td><span class="badge badge-teal">Net Banking</span></td>
+            <td>
+              <select class="status-badge status-confirmed" style="border: none; cursor: pointer; font-weight: 700;">
+                <option value="confirmed" selected>Confirmed</option>
+                <option value="pending">Pending</option>
+              </select>
+            </td>
+          </tr>
+
+          <!-- 4. Yug Shah -->
+          <tr>
+            <td><span style="font-family: monospace; font-weight: 700; color: var(--accent-coral);">SPY-2026-3341</span></td>
+            <td>
+              <strong>Yug Shah</strong>
+              <div style="font-size: 0.8rem; color: var(--admin-muted);">yug.shah@gmail.com</div>
+            </td>
+            <td>Kashmir Heaven on Earth & Dal Lake</td>
+            <td>Oct 20, 2026</td>
+            <td>2 Adults</td>
+            <td><strong style="color: var(--accent-green); font-size: 1.05rem;">₹59,000</strong></td>
+            <td><span class="badge badge-teal">Credit Card</span></td>
+            <td>
+              <select class="status-badge status-confirmed" style="border: none; cursor: pointer; font-weight: 700;">
+                <option value="confirmed" selected>Confirmed</option>
+                <option value="pending">Pending</option>
+              </select>
+            </td>
+          </tr>
+
+          <!-- 5. Yakshraj Jadeja -->
+          <tr>
+            <td><span style="font-family: monospace; font-weight: 700; color: var(--accent-coral);">SPY-2026-8812</span></td>
+            <td>
+              <strong>Yakshraj Jadeja</strong>
+              <div style="font-size: 0.8rem; color: var(--admin-muted);">yakshraj.jadeja@gmail.com</div>
+            </td>
+            <td>Majestic Rajasthan Royal Palaces</td>
+            <td>Nov 02, 2026</td>
+            <td>3 Adults</td>
+            <td><strong style="color: var(--accent-green); font-size: 1.05rem;">₹1,44,000</strong></td>
+            <td><span class="badge badge-teal">UPI / GPay</span></td>
+            <td>
+              <select class="status-badge status-confirmed" style="border: none; cursor: pointer; font-weight: 700;">
+                <option value="confirmed" selected>Confirmed</option>
+                <option value="pending">Pending</option>
+              </select>
+            </td>
+          </tr>
+
+          <!-- 6. Dhyani Joshi -->
+          <tr>
+            <td><span style="font-family: monospace; font-weight: 700; color: var(--accent-coral);">SPY-2026-4490</span></td>
+            <td>
+              <strong>Dhyani Joshi</strong>
+              <div style="font-size: 0.8rem; color: var(--admin-muted);">dhyani.joshi@gmail.com</div>
+            </td>
+            <td>Andaman Coral Islands & Scuba Diving</td>
+            <td>Nov 15, 2026</td>
+            <td>2 Adults</td>
+            <td><strong style="color: var(--accent-green); font-size: 1.05rem;">₹72,000</strong></td>
+            <td><span class="badge badge-teal">UPI / Paytm</span></td>
+            <td>
+              <select class="status-badge status-confirmed" style="border: none; cursor: pointer; font-weight: 700;">
+                <option value="confirmed" selected>Confirmed</option>
+                <option value="pending">Pending</option>
+              </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+</body>
+</html>

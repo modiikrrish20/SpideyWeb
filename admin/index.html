@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard & Analytics | SpidyWeb</title>
+
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Core & Admin Stylesheets -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body class="admin-body">
+
+  <!-- Admin Sidebar -->
+  <aside class="admin-sidebar">
+    <div class="admin-brand">
+      <i class="fas fa-spider" style="color: var(--accent-coral);"></i>
+      <span>SpidyWeb Admin</span>
+    </div>
+
+    <nav class="admin-nav">
+      <a href="index.html" class="admin-nav-item active">
+        <i class="fas fa-chart-pie"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="packages.html" class="admin-nav-item">
+        <i class="fas fa-map-marked-alt"></i>
+        <span>Tour Packages (10+)</span>
+      </a>
+      <a href="bookings.html" class="admin-nav-item">
+        <i class="fas fa-calendar-check"></i>
+        <span>Bookings</span>
+      </a>
+      <a href="inquiries.html" class="admin-nav-item">
+        <i class="fas fa-envelope-open-text"></i>
+        <span>Inquiries</span>
+      </a>
+      <a href="../index.html" class="admin-nav-item">
+        <i class="fas fa-external-link-alt"></i>
+        <span>Live Website</span>
+      </a>
+    </nav>
+
+    <div class="admin-sidebar-footer">
+      <a href="../login.html" class="btn btn-outline btn-block btn-sm" style="border-color: rgba(255,255,255,0.2);">
+        <i class="fas fa-sign-out-alt"></i> Sign Out
+      </a>
+    </div>
+  </aside>
+
+  <!-- Admin Main Workspace -->
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <div class="admin-title-area">
+        <h1>Overview & Analytics (INR ₹)</h1>
+        <p>Real-time booking revenue and customer metrics for 10+ tour destinations.</p>
+      </div>
+
+      <div class="admin-top-actions">
+        <div class="admin-user-pill">
+          <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80" alt="Krrish Modi">
+          <div>
+            <div style="font-size: 0.9rem; font-weight: 700;">Krrish Modi</div>
+            <div style="font-size: 0.75rem; color: var(--admin-muted);">modik3654@gmail.com</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KPI Summary Grid -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-info">
+          <h3>Total Gross Revenue</h3>
+          <div class="kpi-val">₹48,92,000</div>
+          <span style="font-size: 0.8rem; color: var(--accent-green); font-weight: 600;"><i class="fas fa-arrow-up"></i> +24.6% this festive season</span>
+        </div>
+        <div class="kpi-icon green">
+          <i class="fas fa-rupee-sign"></i>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-info">
+          <h3>Active Tour Packages</h3>
+          <div class="kpi-val">11 Tours</div>
+          <span style="font-size: 0.8rem; color: var(--accent-teal); font-weight: 600;">10 Indian + 1 Global</span>
+        </div>
+        <div class="kpi-icon teal">
+          <i class="fas fa-map-marked-alt"></i>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-info">
+          <h3>Confirmed Bookings</h3>
+          <div class="kpi-val">142</div>
+          <span style="font-size: 0.8rem; color: var(--accent-gold); font-weight: 600;">99.2% customer fulfillment</span>
+        </div>
+        <div class="kpi-icon gold">
+          <i class="fas fa-ticket-alt"></i>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-info">
+          <h3>Customer Inquiries</h3>
+          <div class="kpi-val">5</div>
+          <span style="font-size: 0.8rem; color: var(--accent-coral); font-weight: 600;">Average reply: 1.2 hrs</span>
+        </div>
+        <div class="kpi-icon coral">
+          <i class="fas fa-envelope-open-text"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Analytics Charts Section -->
+    <div class="charts-grid">
+      <div class="chart-card">
+        <div class="chart-card-header">
+          <h3 class="chart-title"><i class="fas fa-chart-line" style="color: var(--accent-coral);"></i> Monthly Booking Revenue (₹ Lakhs)</h3>
+          <span class="badge badge-teal">FY 2026-27</span>
+        </div>
+        <div class="chart-container">
+          <canvas id="revenueChart"></canvas>
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-card-header">
+          <h3 class="chart-title"><i class="fas fa-chart-pie" style="color: var(--accent-teal);"></i> Bookings by Indian Region</h3>
+          <span class="badge badge-gold">Live Split</span>
+        </div>
+        <div class="chart-container">
+          <canvas id="categoryChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Reservations Table (All Indian Customer Names) -->
+    <div class="admin-card">
+      <div class="admin-card-header">
+        <h3 class="chart-title"><i class="fas fa-clock" style="color: var(--primary-navy);"></i> Recent Customer Reservations</h3>
+        <a href="bookings.html" class="btn btn-outline-dark btn-sm">View All Bookings</a>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Ref Code</th>
+            <th>Customer</th>
+            <th>Tour Package</th>
+            <th>Departure</th>
+            <th>Guests</th>
+            <th>Amount (INR)</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span style="font-family: monospace; font-weight: 700; color: var(--accent-coral);">SPY-2026-7821</span></td>
+            <td>
+              <strong>Krrish Modi</strong>
+              <div style="font-size: 0.8rem; color: var(--admin-muted);">modik3654@gmail.com</div>
+            </td>
+            <td>Kerala Backwaters Houseboat & Munnar</td>
+            <td>Sep 15, 2026</td>
+            <td>2 Adults</td>
+            <td><strong style="color: var(--accent-green); font-size: 1.05rem;">₹49,998</strong></td>
+            <td><span class="status-badge status-confirmed"><i class="fas fa-check"></i> Confirmed</span></td>
+          </tr>
+
+          <tr>
+            <td><span style="font-family: monospace; font-weight: 700; color: var(--accent-coral);">SPY-2026-9043</span></td>
+            <td>
+              <strong>Hiten Patel</strong>
+              <div style="font-size: 0.8rem; color: var(--admin-muted);">hiten.patel@gmail.com</div>
+            </td>
+            <td>Ladakh Passes, Pangong & Nubra</td>
+            <td>Oct 05, 2026</td>
+            <td>2 Adults</td>
+            <td><strong style="color: var(--accent-green); font-size: 1.05rem;">₹77,000</strong></td>
+            <td><span class="status-badge status-confirmed"><i class="fas fa-check"></i> Confirmed</span></td>
+          </tr>
+
+          <tr>
+            <td><span style="font-family: monospace; font-weight: 700; color: var(--accent-coral);">SPY-2026-5120</span></td>
+            <td>
+              <strong>Shubham Sharma</strong>
+              <div style="font-size: 0.8rem; color: var(--admin-muted);">shubham.sharma@gmail.com</div>
+            </td>
+            <td>Goa Sun, Sand & Water Sports</td>
+            <td>Oct 12, 2026</td>
+            <td>4 Adults</td>
+            <td><strong style="color: var(--accent-green); font-size: 1.05rem;">₹75,996</strong></td>
+            <td><span class="status-badge status-confirmed"><i class="fas fa-check"></i> Confirmed</span></td>
+          </tr>
+
+          <tr>
+            <td><span style="font-family: monospace; font-weight: 700; color: var(--accent-coral);">SPY-2026-3341</span></td>
+            <td>
+              <strong>Yug Shah</strong>
+              <div style="font-size: 0.8rem; color: var(--admin-muted);">yug.shah@gmail.com</div>
+            </td>
+            <td>Kashmir Heaven on Earth & Dal Lake</td>
+            <td>Oct 20, 2026</td>
+            <td>2 Adults</td>
+            <td><strong style="color: var(--accent-green); font-size: 1.05rem;">₹59,000</strong></td>
+            <td><span class="status-badge status-confirmed"><i class="fas fa-check"></i> Confirmed</span></td>
+          </tr>
+
+          <tr>
+            <td><span style="font-family: monospace; font-weight: 700; color: var(--accent-coral);">SPY-2026-8812</span></td>
+            <td>
+              <strong>Yakshraj Jadeja</strong>
+              <div style="font-size: 0.8rem; color: var(--admin-muted);">yakshraj.jadeja@gmail.com</div>
+            </td>
+            <td>Majestic Rajasthan Royal Palaces</td>
+            <td>Nov 02, 2026</td>
+            <td>3 Adults</td>
+            <td><strong style="color: var(--accent-green); font-size: 1.05rem;">₹1,44,000</strong></td>
+            <td><span class="status-badge status-confirmed"><i class="fas fa-check"></i> Confirmed</span></td>
+          </tr>
+
+          <tr>
+            <td><span style="font-family: monospace; font-weight: 700; color: var(--accent-coral);">SPY-2026-4490</span></td>
+            <td>
+              <strong>Dhyani Joshi</strong>
+              <div style="font-size: 0.8rem; color: var(--admin-muted);">dhyani.joshi@gmail.com</div>
+            </td>
+            <td>Andaman Coral Islands & Scuba Diving</td>
+            <td>Nov 15, 2026</td>
+            <td>2 Adults</td>
+            <td><strong style="color: var(--accent-green); font-size: 1.05rem;">₹72,000</strong></td>
+            <td><span class="status-badge status-confirmed"><i class="fas fa-check"></i> Confirmed</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <script src="../assets/js/admin.js"></script>
+</body>
+</html>

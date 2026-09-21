@@ -1,0 +1,329 @@
+/* ==========================================================================
+   Wanderlust Voyage - Admin Portal Stylesheet
+   ========================================================================== */
+
+:root {
+  --admin-sidebar-w: 260px;
+  --admin-bg: #f1f5f9;
+  --admin-card: #ffffff;
+  --admin-primary: #0a192f;
+  --admin-accent: #ff5a5f;
+  --admin-text: #0f172a;
+  --admin-muted: #64748b;
+  --admin-border: #e2e8f0;
+}
+
+body.admin-body {
+  background-color: var(--admin-bg);
+  color: var(--admin-text);
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Sidebar */
+.admin-sidebar {
+  width: var(--admin-sidebar-w);
+  background: var(--admin-primary);
+  color: #ffffff;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.admin-brand {
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 800;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.admin-brand i {
+  color: var(--admin-accent);
+  font-size: 1.5rem;
+}
+
+.admin-nav {
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-grow: 1;
+}
+
+.admin-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.admin-nav-item i {
+  font-size: 1.1rem;
+  width: 20px;
+  text-align: center;
+}
+
+.admin-nav-item:hover, .admin-nav-item.active {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.admin-nav-item.active {
+  background: var(--admin-accent);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.admin-sidebar-footer {
+  padding: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Main Admin Layout */
+.admin-main {
+  margin-left: var(--admin-sidebar-w);
+  flex-grow: 1;
+  padding: 32px 40px;
+  min-width: 0;
+}
+
+/* Topbar */
+.admin-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 36px;
+}
+
+.admin-title-area h1 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--admin-primary);
+}
+
+.admin-title-area p {
+  color: var(--admin-muted);
+  font-size: 0.9rem;
+}
+
+.admin-top-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.admin-user-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--admin-card);
+  padding: 6px 14px 6px 6px;
+  border-radius: 9999px;
+  border: 1px solid var(--admin-border);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.admin-user-pill img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+}
+
+/* KPI Cards Grid */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 36px;
+}
+
+.kpi-card {
+  background: var(--admin-card);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+  border: 1px solid var(--admin-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: transform 0.2s ease;
+}
+
+.kpi-card:hover {
+  transform: translateY(-4px);
+}
+
+.kpi-info h3 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--admin-muted);
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.kpi-val {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--admin-primary);
+  font-family: 'Outfit', sans-serif;
+}
+
+.kpi-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+}
+
+.kpi-icon.coral { background: rgba(255, 90, 95, 0.12); color: var(--admin-accent); }
+.kpi-icon.teal  { background: rgba(0, 180, 216, 0.12); color: #0284c7; }
+.kpi-icon.gold  { background: rgba(255, 183, 3, 0.15); color: #b45309; }
+.kpi-icon.green { background: rgba(16, 185, 129, 0.12); color: #10b981; }
+
+/* Admin Content Card & Table */
+.admin-card {
+  background: var(--admin-card);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+  border: 1px solid var(--admin-border);
+  margin-bottom: 32px;
+}
+
+.admin-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.admin-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--admin-primary);
+}
+
+/* Form Controls */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--admin-text);
+  margin-bottom: 6px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--admin-border);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: var(--admin-text);
+  background: #f8fafc;
+  transition: all 0.2s ease;
+}
+
+.form-control:focus {
+  background: #ffffff;
+  border-color: var(--admin-accent);
+  box-shadow: 0 0 0 3px rgba(255, 90, 95, 0.12);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Action Buttons */
+.action-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.action-edit {
+  background: rgba(0, 180, 216, 0.1);
+  color: #0284c7;
+}
+
+.action-edit:hover {
+  background: #0284c7;
+  color: #ffffff;
+}
+
+.action-delete {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+
+.action-delete:hover {
+  background: #ef4444;
+  color: #ffffff;
+}
+
+/* Charts Wrapper */
+.charts-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.chart-canvas-wrap {
+  position: relative;
+  height: 280px;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-sidebar {
+    transform: translateX(-100%);
+  }
+  .admin-main {
+    margin-left: 0;
+    padding: 20px;
+  }
+  .kpi-grid {
+    grid-template-columns: 1fr;
+  }
+}

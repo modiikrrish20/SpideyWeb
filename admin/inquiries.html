@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Inquiries | SpidyWeb Admin</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body class="admin-body">
+
+  <aside class="admin-sidebar">
+    <div class="admin-brand">
+      <i class="fas fa-spider" style="color: var(--accent-coral);"></i>
+      <span>SpidyWeb Admin</span>
+    </div>
+
+    <nav class="admin-nav">
+      <a href="index.html" class="admin-nav-item">
+        <i class="fas fa-chart-pie"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="packages.html" class="admin-nav-item">
+        <i class="fas fa-map-marked-alt"></i>
+        <span>Tour Packages</span>
+      </a>
+      <a href="bookings.html" class="admin-nav-item">
+        <i class="fas fa-calendar-check"></i>
+        <span>Bookings</span>
+      </a>
+      <a href="inquiries.html" class="admin-nav-item active">
+        <i class="fas fa-envelope-open-text"></i>
+        <span>Inquiries</span>
+      </a>
+      <a href="../index.html" class="admin-nav-item">
+        <i class="fas fa-external-link-alt"></i>
+        <span>Live Website</span>
+      </a>
+    </nav>
+
+    <div class="admin-sidebar-footer">
+      <a href="../login.html" class="btn btn-outline btn-block btn-sm" style="border-color: rgba(255,255,255,0.2);">
+        <i class="fas fa-sign-out-alt"></i> Sign Out
+      </a>
+    </div>
+  </aside>
+
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <div class="admin-title-area">
+        <h1>Customer Inquiries & Messages</h1>
+        <p>Manage customer questions, custom tour requests, and support tickets.</p>
+      </div>
+    </div>
+
+    <div class="admin-card">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Customer</th>
+            <th>Subject</th>
+            <th>Message</th>
+            <th>Date Received</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <strong style="color: var(--admin-primary);">Hiten Patel</strong>
+              <div style="font-size: 0.8rem; color: var(--admin-muted);">hiten.patel@gmail.com</div>
+              <div style="font-size: 0.75rem; color: var(--admin-muted);">+91 98221 44556</div>
+            </td>
+            <td><strong>Custom Ladakh Royal Enfield Bike Expedition</strong></td>
+            <td style="max-width: 320px; font-size: 0.9rem; color: var(--text-muted);">
+              Hi Krrish & team, we are a group of 6 college friends planning a Royal Enfield bullet tour in Ladakh for 8 days. Can you arrange mechanic support?
+            </td>
+            <td>Aug 27, 2026 09:14 AM</td>
+            <td><span class="badge badge-coral">Unread</span></td>
+            <td>
+              <button class="btn btn-primary btn-sm" onclick="this.closest('tr').querySelector('.badge').className='badge badge-green'; this.closest('tr').querySelector('.badge').innerText='Replied'; this.remove();">
+                <i class="fas fa-check"></i> Mark Replied
+              </button>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <strong style="color: var(--admin-primary);">Shubham Sharma</strong>
+              <div style="font-size: 0.8rem; color: var(--admin-muted);">shubham.sharma@gmail.com</div>
+              <div style="font-size: 0.75rem; color: var(--admin-muted);">+91 98332 55667</div>
+            </td>
+            <td><strong>Goa Private Pool Villa for Family Vacation</strong></td>
+            <td style="max-width: 320px; font-size: 0.9rem; color: var(--text-muted);">
+              Hello, do you have 4-BHK private beachfront pool villas in North Goa for our Diwali holiday trip?
+            </td>
+            <td>Aug 26, 2026 04:30 PM</td>
+            <td><span class="badge badge-green">Replied</span></td>
+            <td>
+              <span style="font-size: 0.85rem; color: var(--accent-green);"><i class="fas fa-check-double"></i> Resolved</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <strong style="color: var(--admin-primary);">Yug Shah</strong>
+              <div style="font-size: 0.8rem; color: var(--admin-muted);">yug.shah@gmail.com</div>
+              <div style="font-size: 0.75rem; color: var(--admin-muted);">+91 98443 66778</div>
+            </td>
+            <td><strong>Kashmir Winter Snow & Skiing Passes</strong></td>
+            <td style="max-width: 320px; font-size: 0.9rem; color: var(--text-muted);">
+              Can we book Gulmarg Gondola Phase-2 and ski instructor passes along with our package?
+            </td>
+            <td>Aug 25, 2026 11:20 AM</td>
+            <td><span class="badge badge-coral">Unread</span></td>
+            <td>
+              <button class="btn btn-primary btn-sm" onclick="this.closest('tr').querySelector('.badge').className='badge badge-green'; this.closest('tr').querySelector('.badge').innerText='Replied'; this.remove();">
+                <i class="fas fa-check"></i> Mark Replied
+              </button>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <strong style="color: var(--admin-primary);">Yakshraj Jadeja</strong>
+              <div style="font-size: 0.8rem; color: var(--admin-muted);">yakshraj.jadeja@gmail.com</div>
+              <div style="font-size: 0.75rem; color: var(--admin-muted);">+91 98554 77889</div>
+            </td>
+            <td><strong>Rajasthan Desert Camp Group Booking</strong></td>
+            <td style="max-width: 320px; font-size: 0.9rem; color: var(--text-muted);">
+              We want to book a 15-person desert camp in Jaisalmer Sam Sand Dunes for New Year celebration.
+            </td>
+            <td>Aug 24, 2026 02:45 PM</td>
+            <td><span class="badge badge-green">Replied</span></td>
+            <td>
+              <span style="font-size: 0.85rem; color: var(--accent-green);"><i class="fas fa-check-double"></i> Resolved</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <strong style="color: var(--admin-primary);">Dhyani Joshi</strong>
+              <div style="font-size: 0.8rem; color: var(--admin-muted);">dhyani.joshi@gmail.com</div>
+              <div style="font-size: 0.75rem; color: var(--admin-muted);">+91 98665 88990</div>
+            </td>
+            <td><strong>Andaman Scuba Diving Certification Query</strong></td>
+            <td style="max-width: 320px; font-size: 0.9rem; color: var(--text-muted);">
+              Hi, is PADI open-water scuba diving certification included in the Havelock package?
+            </td>
+            <td>Aug 23, 2026 06:10 PM</td>
+            <td><span class="badge badge-coral">Unread</span></td>
+            <td>
+              <button class="btn btn-primary btn-sm" onclick="this.closest('tr').querySelector('.badge').className='badge badge-green'; this.closest('tr').querySelector('.badge').innerText='Replied'; this.remove();">
+                <i class="fas fa-check"></i> Mark Replied
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+</body>
+</html>
