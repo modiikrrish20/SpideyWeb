@@ -90,7 +90,7 @@ var results = [];
 var initialUser = {
   id: 1,
   full_name: 'Krrish Modi',
-  email: 'modik3654@gmail.com',
+  email: 'krrish@spideyweb.travel',
   password: 'user123',
   role: 'customer',
   avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80'
@@ -111,7 +111,7 @@ SpideyAuth.updateUserAvatar(customBeachPhoto);
 
 var updatedUser = SpideyAuth.getAuthUser();
 var registeredUsers = SpideyAuth.getRegisteredUsers();
-var krishRegistered = registeredUsers.find(function(u) { return u.email === 'modik3654@gmail.com'; });
+var krishRegistered = registeredUsers.find(function(u) { return u.email === 'krrish@spideyweb.travel'; });
 
 results.push({
   test: 'updateUserAvatar updates DOM immediately',
@@ -135,8 +135,8 @@ results.push({
 results.push({
   test: 'updateUserAvatar sets userAvatar in localStorage',
   localStorageAvatar: localStorage.getItem('userAvatar'),
-  userScopedAvatar: localStorage.getItem('userAvatar_modik3654@gmail.com'),
-  pass: localStorage.getItem('userAvatar') === customBeachPhoto && localStorage.getItem('userAvatar_modik3654@gmail.com') === customBeachPhoto
+  userScopedAvatar: localStorage.getItem('userAvatar_krrish@spideyweb.travel'),
+  pass: localStorage.getItem('userAvatar') === customBeachPhoto && localStorage.getItem('userAvatar_krrish@spideyweb.travel') === customBeachPhoto
 });
 
 // 3. Simulate user navigating back to index.html (main home page reload)
@@ -152,7 +152,7 @@ results.push({
 // 4. Simulate real-time cross-tab storage event
 var newPresetAvatar = 'https://images.unsplash.com/photo-custom-preset-999';
 storage['userAvatar'] = newPresetAvatar;
-storage['userAvatar_modik3654@gmail.com'] = newPresetAvatar;
+storage['userAvatar_krrish@spideyweb.travel'] = newPresetAvatar;
 
 var storageEventCbs = listeners['storage'] || [];
 for (var i = 0; i < storageEventCbs.length; i++) {

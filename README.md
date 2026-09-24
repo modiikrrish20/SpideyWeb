@@ -356,5 +356,5 @@ erDiagram
 ## 👨‍💻 Project Information & Credits
 * **Project Name**: SpidyWeb Tours & Travels
 * **Author / Developer**: Krrish Modi
-* **Contact**: [modik3654@gmail.com](mailto:modik3654@gmail.com)
+* **Contact**: [krrish@spideyweb.travel](mailto:krrish@spideyweb.travel)
 * **Academic References**: Refer to [`PROJECT_DOCUMENTATION.md`](file:///Users/krrish/Downloads/Antigravity%20/SpideyWeb/PROJECT_DOCUMENTATION.md) for full ER diagrams, DFDs, and viva guides.

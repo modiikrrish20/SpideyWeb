@@ -13,10 +13,10 @@ const DEFAULT_ACCOUNTS = [
   {
     id: 1,
     full_name: 'Krrish Modi',
-    email: 'modik3654@gmail.com',
+    email: 'krrish@spideyweb.travel',
     password: 'user123',
     role: 'customer',
-    phone: '+91 98765 43210',
+    phone: '+91 98000 00000',
     avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80'
   },
   {
@@ -25,7 +25,7 @@ const DEFAULT_ACCOUNTS = [
     email: 'hiten@gmail.com',
     password: '12345',
     role: 'customer',
-    phone: '+91 98221 44556',
+    phone: '+91 98000 00000',
     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80'
   }
 ];
@@ -41,13 +41,14 @@ function getRegisteredUsers() {
 
     // Purge unwanted old dummy accounts from localStorage
     stored = stored.filter(u =>
-      u.email !== 'hiten.patel@gmail.com'
+      u.email !== 'hiten.patel@gmail.com' && u.email !== 'modik3654@gmail.com'
     );
 
     // Fix Patil spelling on hiten account
     stored.forEach(u => {
       if (u.email && u.email.toLowerCase() === 'hiten@gmail.com') {
         u.full_name = 'Hiten Patil';
+        u.phone = '+91 98000 00000';
       }
     });
 
@@ -87,9 +88,16 @@ function getAuthUser() {
     const raw = localStorage.getItem(AUTH_USER_KEY);
     if (!raw) return null;
     const user = JSON.parse(raw);
-    if (user && user.email && user.email.toLowerCase() === 'hiten@gmail.com' && user.full_name !== 'Hiten Patil') {
-      user.full_name = 'Hiten Patil';
-      localStorage.setItem(AUTH_USER_KEY, JSON.stringify(user));
+    if (user && user.email) {
+      if (user.email.toLowerCase() === 'modik3654@gmail.com') {
+        user.email = 'krrish@spideyweb.travel';
+        user.phone = '+91 98000 00000';
+        localStorage.setItem(AUTH_USER_KEY, JSON.stringify(user));
+      }
+      if (user.email.toLowerCase() === 'hiten@gmail.com' && user.full_name !== 'Hiten Patil') {
+        user.full_name = 'Hiten Patil';
+        localStorage.setItem(AUTH_USER_KEY, JSON.stringify(user));
+      }
     }
     return user;
   } catch (e) {
@@ -197,7 +205,7 @@ function syncNavbarUser() {
 
   const welcomeSub = document.getElementById('dashboard-welcome-sub');
   if (welcomeSub) {
-    welcomeSub.innerHTML = `<i class="fas fa-envelope"></i> <span class="user-email-display">${user.email}</span> &bull; <i class="fas fa-phone"></i> <span class="user-phone-display">${user.phone || '+91 98765 43210'}</span>`;
+    welcomeSub.innerHTML = `<i class="fas fa-envelope"></i> <span class="user-email-display">${user.email}</span> &bull; <i class="fas fa-phone"></i> <span class="user-phone-display">${user.phone || '+91 98000 00000'}</span>`;
   }
 
   // Avatar Image elements - prioritize custom avatar saved in localStorage

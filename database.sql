@@ -199,9 +199,9 @@ CREATE TABLE `inquiries` (
 
 -- Seed Users
 INSERT INTO `users` (`id`, `full_name`, `email`, `password`, `phone`, `role`) VALUES
-(1, 'Krrish Modi (Admin)', 'modik3654@gmail.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '+91 98765 43210', 'admin'),
-(2, 'Krrish Modi', 'krrish.modi@gmail.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '+91 98765 43210', 'customer'),
-(3, 'Hiten Patil', 'hiten@gmail.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '+91 98221 44556', 'customer'),
+(1, 'Krrish Modi (Admin)', 'krrish@spideyweb.travel', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '+91 98000 00000', 'admin'),
+(2, 'Krrish Modi', 'krrish.modi@gmail.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '+91 98000 00000', 'customer'),
+(3, 'Hiten Patil', 'hiten@gmail.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '+91 98000 00000', 'customer'),
 (4, 'Shubham Sharma', 'shubham.sharma@gmail.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '+91 98332 55667', 'customer'),
 (5, 'Yug Shah', 'yug.shah@gmail.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '+91 98443 66778', 'customer'),
 (6, 'Yakshraj Jadeja', 'yakshraj.jadeja@gmail.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '+91 98554 77889', 'customer'),

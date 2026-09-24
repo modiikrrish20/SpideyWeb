@@ -1,7 +1,7 @@
 # 🎓 Faculty Presentation & Viva Defense Guide
 ## Project: SpidyWeb - Tour & Travel Management System
 **Student / Developer:** Krrish Modi  
-**Email:** modik3654@gmail.com  
+**Email:** krrish@spideyweb.travel  
 **Tech Stack:** HTML5, CSS3, Vanilla JavaScript, PHP 8 / 7.4+, MySQL (via PDO)  
 **Currency System:** Indian Rupees (₹) & Global Standard
 
@@ -10,7 +10,7 @@
 ## 📌 1. Project Introduction (30-Second Elevator Pitch)
 > **What you should say to Mam / Faculty:**
 >
-> *"Good morning/afternoon Mam. My name is **Krrish Modi (modik3654@gmail.com)** and my project is **SpidyWeb**, a full-stack **Tour & Travel Management System** developed using **HTML5, CSS3, Vanilla JavaScript, and PHP with a MySQL database**.*
+> *"Good morning/afternoon Mam. My name is **Krrish Modi (krrish@spideyweb.travel)** and my project is **SpidyWeb**, a full-stack **Tour & Travel Management System** developed using **HTML5, CSS3, Vanilla JavaScript, and PHP with a MySQL database**.*
 >
 > *SpidyWeb allows travelers to discover and book tour packages across **Incredible India (Kerala Backwaters, Ladakh Himalayan Passes, Goa Beaches, Kashmir Valley, Rajasthan Royal Palaces, and Varanasi Spiritual Ghats)** as well as global destinations with real-time pricing in **Indian Rupees (₹)**. Customers can filter by duration and budget, view detailed day-by-day itineraries, and complete multi-step reservations with instant travel voucher generation. On the backend, SpidyWeb provides a comprehensive administrative dashboard for managing tour packages, tracking booking revenues, and handling customer inquiries."*
 
@@ -116,11 +116,11 @@ Follow this sequence when showing the project to Mam:
 - **Say**: *"This launches our 3-step interactive booking modal with live Rupee pricing and 5% GST calculation. When confirmed, SpidyWeb generates an official travel voucher with a QR code stamp for Krrish Modi."*
 
 ### Step 4: Customer Dashboard (`my-bookings.html`)
-- **Show**: Click on "My Trips" showing **Krrish Modi (modik3654@gmail.com)**.
+- **Show**: Click on "My Trips" showing **Krrish Modi (krrish@spideyweb.travel)**.
 - **Say**: *"Customers can log in anytime to review their booked trips, download printable vouchers, or request a cancellation."*
 
 ### Step 5: Admin Management Portal (`admin/index.html`)
-- **Show**: Navigate to `admin/index.html` (logged in as **Krrish Modi** / `modik3654@gmail.com`).
+- **Show**: Navigate to `admin/index.html` (logged in as **Krrish Modi** / `krrish@spideyweb.travel`).
 - **Say**: *"Here is the administrative control center with total gross revenue in ₹ Lakhs, active tours, confirmed bookings, and monthly revenue analytics using the HTML5 Canvas API."*
 
 ---
@@ -129,5 +129,5 @@ Follow this sequence when showing the project to Mam:
 
 | Role | Name | Email | Password | Access Level |
 |---|---|---|---|---|
-| **System Administrator** | Krrish Modi | `modik3654@gmail.com` | `admin123` | Full Admin Portal (`admin/index.html`) & Package CRUD |
-| **Customer Account** | Krrish Modi | `modik3654@gmail.com` | `user123` | Customer Trips (`my-bookings.html`) & Booking Engine |
+| **System Administrator** | Krrish Modi | `krrish@spideyweb.travel` | `admin123` | Full Admin Portal (`admin/index.html`) & Package CRUD |
+| **Customer Account** | Krrish Modi | `krrish@spideyweb.travel` | `user123` | Customer Trips (`my-bookings.html`) & Booking Engine |

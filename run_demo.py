@@ -24,10 +24,10 @@ def check_php():
     return shutil.which("php")
 
 MOCK_USERS = {
-    "modik3654@gmail.com": {
+    "krrish@spideyweb.travel": {
         "id": 1,
         "full_name": "Krrish Modi",
-        "email": "modik3654@gmail.com",
+        "email": "krrish@spideyweb.travel",
         "password": "user123",
         "role": "customer"
     },

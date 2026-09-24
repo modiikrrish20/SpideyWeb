@@ -28,7 +28,7 @@ define('DB_PASS', '');
 define('APP_NAME', 'SpidyWeb Tours & Travels');
 define('APP_TAGLINE', 'Weaving Unforgettable Journeys Across India & The Globe');
 define('APP_URL', ''); // Auto-detected or relative
-define('ADMIN_EMAIL', 'modik3654@gmail.com');
+define('ADMIN_EMAIL', 'krrish@spideyweb.travel');
 define('CURRENCY_SYMBOL', '₹');
 
 /**
@@ -216,8 +216,8 @@ function seedInitialData(PDO $db) {
 
     // Users
     $stmt = $db->prepare("INSERT INTO users (id, full_name, email, password, phone, role) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->execute([1, 'Krrish Modi (Admin)', 'modik3654@gmail.com', $hashedAdmin, '+91 98765 43210', 'admin']);
-    $stmt->execute([2, 'Krrish Modi', 'modik3654@gmail.com', $hashedUser, '+91 98765 43210', 'customer']);
+    $stmt->execute([1, 'Krrish Modi (Admin)', 'krrish@spideyweb.travel', $hashedAdmin, '+91 98000 00000', 'admin']);
+    $stmt->execute([2, 'Krrish Modi', 'krrish@spideyweb.travel', $hashedUser, '+91 98000 00000', 'customer']);
 
     // Categories
     $catStmt = $db->prepare("INSERT INTO categories (id, name, slug, icon, description) VALUES (?, ?, ?, ?, ?)");
