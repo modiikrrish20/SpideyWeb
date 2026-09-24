@@ -1,7 +1,7 @@
 -- ==========================================================
 -- SpidyWeb Tour & Travel Management System (database.sql)
 -- Complete Database Schema & Seed Data (12 Comprehensive Destination Stacks)
--- Customer Profiles: Krrish Modi, Hiten Patel, Shubham Sharma, Yug Shah, Yakshraj Jadeja, Dhyani Joshi
+-- Customer Profiles: Krrish Modi, Hiten Patil, Shubham Sharma, Yug Shah, Yakshraj Jadeja, Dhyani Joshi
 -- All Prices in Indian Rupees (₹) with 100% Unique Data per Stack
 -- ==========================================================
 
@@ -201,7 +201,7 @@ CREATE TABLE `inquiries` (
 INSERT INTO `users` (`id`, `full_name`, `email`, `password`, `phone`, `role`) VALUES
 (1, 'Krrish Modi (Admin)', 'modik3654@gmail.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '+91 98765 43210', 'admin'),
 (2, 'Krrish Modi', 'krrish.modi@gmail.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '+91 98765 43210', 'customer'),
-(3, 'Hiten Patel', 'hiten.patel@gmail.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '+91 98221 44556', 'customer'),
+(3, 'Hiten Patil', 'hiten@gmail.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '+91 98221 44556', 'customer'),
 (4, 'Shubham Sharma', 'shubham.sharma@gmail.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '+91 98332 55667', 'customer'),
 (5, 'Yug Shah', 'yug.shah@gmail.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '+91 98443 66778', 'customer'),
 (6, 'Yakshraj Jadeja', 'yakshraj.jadeja@gmail.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '+91 98554 77889', 'customer'),
@@ -257,7 +257,7 @@ INSERT INTO `packages` (`id`, `category_id`, `title`, `slug`, `subtitle`, `place
 -- Seed Bookings with Indian Names
 INSERT INTO `bookings` (`id`, `booking_ref`, `user_id`, `package_id`, `travel_date`, `adults`, `children`, `hotel_tier`, `total_amount`, `payment_method`, `payment_status`, `booking_status`, `special_requests`) VALUES
 (1, 'SPY-2026-7821', 1, 1, '2026-09-15', 2, 0, 'Luxury', 49998.00, 'UPI / GPay', 'paid', 'confirmed', 'Krrish Modi: Couple tour, flower decoration on Kerala houseboat requested.'),
-(2, 'SPY-2026-9043', 3, 2, '2026-10-05', 2, 0, 'Deluxe', 77000.00, 'UPI / PhonePe', 'paid', 'confirmed', 'Hiten Patel: Extra oxygen cylinder for Khardung La pass.'),
+(2, 'SPY-2026-9043', 3, 2, '2026-10-05', 2, 0, 'Deluxe', 77000.00, 'UPI / PhonePe', 'paid', 'confirmed', 'Hiten Patil: Extra oxygen cylinder for Khardung La pass.'),
 (3, 'SPY-2026-5120', 4, 3, '2026-10-12', 4, 0, 'Deluxe', 75996.00, 'Net Banking', 'paid', 'confirmed', 'Shubham Sharma: Beachside villa and water sports package.'),
 (4, 'SPY-2026-3341', 5, 4, '2026-10-20', 2, 0, 'Deluxe', 59000.00, 'Credit Card', 'paid', 'confirmed', 'Yug Shah: Shikara ride timing for sunset on Dal Lake.'),
 (5, 'SPY-2026-8812', 6, 5, '2026-11-02', 3, 0, 'Luxury', 144000.00, 'UPI / GPay', 'paid', 'confirmed', 'Yakshraj Jadeja: Royal Haveli suite in Udaipur requested.'),
@@ -266,7 +266,7 @@ INSERT INTO `bookings` (`id`, `booking_ref`, `user_id`, `package_id`, `travel_da
 -- Seed Reviews with Indian Names
 INSERT INTO `reviews` (`package_id`, `user_id`, `rating`, `comment`) VALUES
 (1, 1, 5, 'The Alleppey houseboat experience by SpidyWeb was magical! Freshly cooked South Indian Sadya and serene sunrise.'),
-(2, 3, 5, 'Hiten Patel: Ladakh trip with SpidyWeb was flawless. Oxygen cylinder support and Pangong luxury tents were top class!'),
+(2, 3, 5, 'Hiten Patil: Ladakh trip with SpidyWeb was flawless. Oxygen cylinder support and Pangong luxury tents were top class!'),
 (3, 4, 5, 'Shubham Sharma: Goa beach water sports and sunset catamaran cruise organized by SpidyWeb made our vacation unforgettable!'),
 (4, 5, 5, 'Yug Shah: Dal Lake Shikara ride and Gulmarg cable car with SpidyWeb was like a dream. 10/10 recommendation!'),
 (5, 6, 5, 'Yakshraj Jadeja: Royal Rajasthan forts and Lake Pichola boat tour were breathtaking. True 5-star hospitality.'),
@@ -274,7 +274,7 @@ INSERT INTO `reviews` (`package_id`, `user_id`, `rating`, `comment`) VALUES
 
 -- Seed Inquiries with Indian Names
 INSERT INTO `inquiries` (`name`, `email`, `phone`, `destination_id`, `subject`, `message`, `status`) VALUES
-('Hiten Patel', 'hiten.patel@gmail.com', '+91 98221 44556', 2, 'Custom Ladakh Bike Tour for 6 Friends', 'Hi Krrish & SpidyWeb team, we are planning a Royal Enfield bullet bike expedition to Ladakh in October.', 'unread'),
+('Hiten Patil', 'hiten@gmail.com', '+91 98221 44556', 2, 'Custom Ladakh Bike Tour for 6 Friends', 'Hi Krrish & SpidyWeb team, we are planning a Royal Enfield bullet bike expedition to Ladakh in October.', 'unread'),
 ('Shubham Sharma', 'shubham.sharma@gmail.com', '+91 98332 55667', 3, 'Goa Private Pool Villa Query', 'Hello, do you have 4-BHK beachfront villas in North Goa for our Diwali family vacation?', 'read'),
 ('Yug Shah', 'yug.shah@gmail.com', '+91 98443 66778', 4, 'Kashmir Winter Snow Itinerary', 'Can we book Gulmarg Gondola Phase-2 and ski instructor passes along with our package?', 'unread'),
 ('Yakshraj Jadeja', 'yakshraj.jadeja@gmail.com', '+91 98554 77889', 5, 'Rajasthan Desert Camp Group Booking', 'We want to book a 15-person desert camp in Jaisalmer Sam Sand Dunes for New Year.', 'replied'),

@@ -590,6 +590,13 @@ function initAvatarManager() {
     applyAvatarToAllElements(savedAvatar);
   }
 
+  // Listen for custom avatar events dispatched by SpideyAuth
+  window.addEventListener('spidey_avatar_changed', (e) => {
+    if (e.detail && e.detail.avatar) {
+      applyAvatarToAllElements(e.detail.avatar);
+    }
+  });
+
   const fileInput = document.getElementById('avatar-file-input');
   if (fileInput) {
     fileInput.addEventListener('change', (e) => {
@@ -597,11 +604,62 @@ function initAvatarManager() {
       if (file) {
         const reader = new FileReader();
         reader.onload = (event) => {
-          const base64Img = event.target.result;
-          localStorage.setItem('userAvatar', base64Img);
-          applyAvatarToAllElements(base64Img);
-          showToast('Profile photo (DP) updated successfully!', 'success');
-          closeAvatarModal();
+          const rawBase64 = event.target.result;
+
+          // Auto-compress high-resolution photos using canvas
+          // Keeps image crisp at max 320x320 and under 35KB, preventing QuotaExceededError
+          const img = new Image();
+          img.onload = () => {
+            try {
+              const canvas = document.createElement('canvas');
+              const maxDim = 320;
+              let width = img.width;
+              let height = img.height;
+              if (width > height) {
+                if (width > maxDim) {
+                  height = Math.round((height * maxDim) / width);
+                  width = maxDim;
+                }
+              } else {
+                if (height > maxDim) {
+                  width = Math.round((width * maxDim) / height);
+                  height = maxDim;
+                }
+              }
+              canvas.width = width;
+              canvas.height = height;
+              const ctx = canvas.getContext('2d');
+              ctx.drawImage(img, 0, 0, width, height);
+              const optimizedBase64 = canvas.toDataURL('image/jpeg', 0.88);
+
+              if (window.SpideyAuth && typeof window.SpideyAuth.updateUserAvatar === 'function') {
+                window.SpideyAuth.updateUserAvatar(optimizedBase64);
+              } else {
+                try { localStorage.setItem('userAvatar', optimizedBase64); } catch (err) {}
+                applyAvatarToAllElements(optimizedBase64);
+              }
+            } catch (canvasErr) {
+              if (window.SpideyAuth && typeof window.SpideyAuth.updateUserAvatar === 'function') {
+                window.SpideyAuth.updateUserAvatar(rawBase64);
+              } else {
+                try { localStorage.setItem('userAvatar', rawBase64); } catch (err) {}
+                applyAvatarToAllElements(rawBase64);
+              }
+            }
+            showToast('Profile photo (DP) updated successfully!', 'success');
+            closeAvatarModal();
+          };
+          img.onerror = () => {
+            if (window.SpideyAuth && typeof window.SpideyAuth.updateUserAvatar === 'function') {
+              window.SpideyAuth.updateUserAvatar(rawBase64);
+            } else {
+              try { localStorage.setItem('userAvatar', rawBase64); } catch (err) {}
+              applyAvatarToAllElements(rawBase64);
+            }
+            showToast('Profile photo (DP) updated successfully!', 'success');
+            closeAvatarModal();
+          };
+          img.src = rawBase64;
         };
         reader.readAsDataURL(file);
       }
@@ -610,7 +668,8 @@ function initAvatarManager() {
 }
 
 function applyAvatarToAllElements(imgSrc) {
-  document.querySelectorAll('.user-avatar-img, .user-avatar-btn img, .admin-user-pill img, #dashboard-dp, #header-dp').forEach(img => {
+  if (!imgSrc) return;
+  document.querySelectorAll('.user-avatar-img, .user-avatar-btn img, .admin-user-pill img, #dashboard-dp, #header-dp, #avatar-modal .modal-body img.user-avatar-img').forEach(img => {
     img.src = imgSrc;
   });
 }
@@ -626,8 +685,12 @@ function closeAvatarModal() {
 }
 
 function selectPresetAvatar(src) {
-  localStorage.setItem('userAvatar', src);
-  applyAvatarToAllElements(src);
+  if (window.SpideyAuth && typeof window.SpideyAuth.updateUserAvatar === 'function') {
+    window.SpideyAuth.updateUserAvatar(src);
+  } else {
+    try { localStorage.setItem('userAvatar', src); } catch (e) {}
+    applyAvatarToAllElements(src);
+  }
   showToast('Profile photo updated!', 'success');
   closeAvatarModal();
 }

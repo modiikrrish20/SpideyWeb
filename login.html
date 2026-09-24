@@ -3,135 +3,413 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign In or Register | SpidyWeb</title>
+  <title>Sign In & Register | SpidyWeb Tours & Travels</title>
   
+  <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .auth-page-wrapper {
+      background: radial-gradient(circle at 10% 20%, #0d213a 0%, #07111e 60%, #050b14 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .auth-page-wrapper::before {
+      content: '';
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(235, 94, 40, 0.15) 0%, transparent 70%);
+      top: -100px;
+      right: -100px;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .auth-page-wrapper::after {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(42, 157, 143, 0.12) 0%, transparent 70%);
+      bottom: -100px;
+      left: -100px;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .auth-card {
+      width: 100%;
+      max-width: 480px;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      padding: 38px 36px;
+      position: relative;
+      z-index: 1;
+    }
+    .auth-tabs-nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      background: #f1f5f9;
+      padding: 5px;
+      border-radius: 12px;
+      margin-bottom: 26px;
+    }
+    .auth-tab-btn {
+      border: none;
+      background: transparent;
+      padding: 10px 8px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #64748b;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .auth-tab-btn.active {
+      background: var(--primary-navy, #0a192f);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(10, 25, 47, 0.2);
+    }
+    .input-icon-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .input-icon-wrap i.field-icon {
+      position: absolute;
+      left: 14px;
+      color: #94a3b8;
+      font-size: 0.95rem;
+      pointer-events: none;
+    }
+    .input-icon-wrap .widget-input {
+      padding-left: 42px;
+      padding-right: 42px;
+    }
+    .toggle-pass-btn {
+      position: absolute;
+      right: 12px;
+      background: none;
+      border: none;
+      color: #94a3b8;
+      cursor: pointer;
+      padding: 6px;
+      font-size: 0.9rem;
+    }
+    .toggle-pass-btn:hover {
+      color: var(--primary-navy);
+    }
+  </style>
 </head>
-<body style="background: linear-gradient(135deg, #07111e 0%, #0a192f 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px;">
+<body class="auth-page-wrapper">
 
-  <div style="width: 100%; max-width: 480px; background: #ffffff; border-radius: var(--radius-lg); box-shadow: var(--shadow-xl); overflow: hidden; padding: 40px 36px;">
+  <div class="auth-card">
     
-    <div style="text-align: center; margin-bottom: 28px;">
-      <a href="index.html" class="logo" style="color: var(--primary-navy); justify-content: center; margin-bottom: 8px;">
+    <!-- Brand Header -->
+    <div style="text-align: center; margin-bottom: 24px;">
+      <a href="index.html" class="logo" style="color: var(--primary-navy); justify-content: center; margin-bottom: 8px; font-size: 1.6rem;">
         <i class="fas fa-spider" style="color: var(--accent-coral);"></i>
         <span>SpidyWeb</span>
       </a>
-      <p style="color: var(--text-muted); font-size: 0.9rem;">Sign in to access your Indian & global tours in Rupees (₹)</p>
+      <p style="color: var(--text-muted); font-size: 0.88rem; margin-top: 4px;">
+        Authentication Portal & User Management System
+      </p>
     </div>
 
-    <!-- Toggle Buttons -->
-    <div style="display: flex; gap: 8px; margin-bottom: 24px; background: var(--bg-main); padding: 4px; border-radius: var(--radius-full);">
-      <button type="button" id="tab-btn-signin" class="btn btn-sm btn-block" style="background: var(--primary-navy); color: #fff;" onclick="switchTab('login')">
-        Sign In
+    <!-- 2-Way Tabs Navigation (Sign In & Sign Up) -->
+    <div class="auth-tabs-nav" role="tablist">
+      <button type="button" id="tab-btn-login" class="auth-tab-btn active" onclick="showAuthTab('login')">
+        <i class="fas fa-sign-in-alt"></i> Sign In
       </button>
-      <button type="button" id="tab-btn-signup" class="btn btn-sm btn-block" style="background: transparent; color: var(--text-muted);" onclick="switchTab('register')">
-        Create Account
+      <button type="button" id="tab-btn-register" class="auth-tab-btn" onclick="showAuthTab('register')">
+        <i class="fas fa-user-plus"></i> Sign Up
       </button>
     </div>
 
-    <!-- Sign In Form -->
-    <form id="page-login-form" onsubmit="event.preventDefault(); window.location.href='my-bookings.html';">
+    <!-- 1. SIGN IN (LOGIN) FORM -->
+    <form id="form-login" onsubmit="handleLoginSubmit(event)">
       <div class="widget-form-group">
-        <label class="widget-label">Email Address</label>
-        <input type="email" id="login-email" class="widget-input" placeholder="modik3654@gmail.com" value="modik3654@gmail.com" required>
+        <label class="widget-label">User ID / Email Address</label>
+        <div class="input-icon-wrap">
+          <i class="fas fa-envelope field-icon"></i>
+          <input type="text" id="login-identifier" class="widget-input" placeholder="e.g. user@example.com" required autocomplete="username">
+        </div>
       </div>
 
       <div class="widget-form-group">
         <label class="widget-label">Password</label>
-        <input type="password" id="login-password" class="widget-input" placeholder="••••••••" value="user123" required>
-      </div>
-
-      <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top: 10px;">
-        <i class="fas fa-sign-in-alt"></i> Sign In to SpidyWeb
-      </button>
-
-      <!-- Quick Demo Access Badges for Presentation -->
-      <div style="margin-top: 24px; padding-top: 18px; border-top: 1px dashed var(--border-light); text-align: center;">
-        <p style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px;">
-          <i class="fas fa-magic"></i> 1-Click Faculty Demo Credentials
-        </p>
-        <div style="display: flex; gap: 8px; justify-content: center;">
-          <button type="button" class="badge badge-teal" style="cursor: pointer; padding: 6px 12px; font-size: 0.8rem;" onclick="fillCreds('modik3654@gmail.com', 'user123', 'customer')">
-            <i class="fas fa-user"></i> Krrish Modi (Customer)
-          </button>
-          <button type="button" class="badge badge-coral" style="cursor: pointer; padding: 6px 12px; font-size: 0.8rem;" onclick="fillCreds('modik3654@gmail.com', 'admin123', 'admin')">
-            <i class="fas fa-user-shield"></i> Krrish Modi (Admin)
+        <div class="input-icon-wrap">
+          <i class="fas fa-lock field-icon"></i>
+          <input type="password" id="login-password" class="widget-input" placeholder="Enter your password" required autocomplete="current-password">
+          <button type="button" class="toggle-pass-btn" onclick="togglePassVisibility('login-password', this)" title="Show/Hide Password">
+            <i class="far fa-eye"></i>
           </button>
         </div>
       </div>
+
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+        <label style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: #475569; cursor: pointer;">
+          <input type="checkbox" id="login-remember" checked style="accent-color: var(--accent-coral);">
+          Remember my login on this device
+        </label>
+      </div>
+
+      <button type="submit" id="btn-login-submit" class="btn btn-primary btn-block btn-lg">
+        <i class="fas fa-sign-in-alt"></i> Sign In to SpidyWeb
+      </button>
+
+      <p style="text-align: center; margin-top: 20px; font-size: 0.88rem; color: #64748b;">
+        Don't have an account? <a href="javascript:void(0)" onclick="showAuthTab('register')" style="color: var(--accent-coral); font-weight: 700;">Create one here</a>
+      </p>
     </form>
 
-    <!-- Sign Up Form -->
-    <form id="page-register-form" style="display: none;" onsubmit="event.preventDefault(); alert('Account successfully created! Welcome to SpidyWeb, Krrish Modi.'); window.location.href='my-bookings.html';">
+    <!-- 2. CREATE ACCOUNT (REGISTRATION) FORM -->
+    <form id="form-register" style="display: none;" onsubmit="handleRegisterSubmit(event)">
       <div class="widget-form-group">
         <label class="widget-label">Full Name</label>
-        <input type="text" class="widget-input" value="Krrish Modi" required>
+        <div class="input-icon-wrap">
+          <i class="fas fa-user field-icon"></i>
+          <input type="text" id="reg-fullname" class="widget-input" placeholder="e.g. Krrish Modi" required>
+        </div>
       </div>
 
       <div class="widget-form-group">
-        <label class="widget-label">Email Address</label>
-        <input type="email" class="widget-input" value="modik3654@gmail.com" required>
+        <label class="widget-label">User ID / Email Address</label>
+        <div class="input-icon-wrap">
+          <i class="fas fa-envelope field-icon"></i>
+          <input type="email" id="reg-email" class="widget-input" placeholder="name@example.com" required>
+        </div>
+      </div>
+
+      <div class="widget-form-group">
+        <label class="widget-label">Phone Number</label>
+        <div class="input-icon-wrap">
+          <i class="fas fa-phone field-icon"></i>
+          <input type="tel" id="reg-phone" class="widget-input" placeholder="+91 98765 43210" value="+91 ">
+        </div>
       </div>
 
       <div class="widget-form-group">
         <label class="widget-label">Password</label>
-        <input type="password" class="widget-input" placeholder="Min 6 characters" value="user123" required>
+        <div class="input-icon-wrap">
+          <i class="fas fa-lock field-icon"></i>
+          <input type="password" id="reg-password" class="widget-input" placeholder="Create a password" required>
+          <button type="button" class="toggle-pass-btn" onclick="togglePassVisibility('reg-password', this)">
+            <i class="far fa-eye"></i>
+          </button>
+        </div>
       </div>
 
-      <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top: 10px;">
-        <i class="fas fa-user-plus"></i> Complete Registration
+      <div class="widget-form-group">
+        <label class="widget-label">Confirm Password</label>
+        <div class="input-icon-wrap">
+          <i class="fas fa-shield-alt field-icon"></i>
+          <input type="password" id="reg-confirm-password" class="widget-input" placeholder="Re-enter your password" required>
+        </div>
+      </div>
+
+      <button type="submit" id="btn-register-submit" class="btn btn-primary btn-block btn-lg" style="margin-top: 10px;">
+        <i class="fas fa-user-plus"></i> Create Account & Sign In
       </button>
+
+      <p style="text-align: center; margin-top: 16px; font-size: 0.88rem; color: #64748b;">
+        Already have an account? <a href="javascript:void(0)" onclick="showAuthTab('login')" style="color: var(--accent-coral); font-weight: 700;">Sign In here</a>
+      </p>
     </form>
 
-    <div style="text-align: center; margin-top: 20px;">
-      <a href="index.html" style="font-size: 0.85rem; color: var(--text-muted);"><i class="fas fa-arrow-left"></i> Return to SpidyWeb Home</a>
-    </div>
   </div>
 
+  <div class="toast-container" id="auth-toasts"></div>
+
+  <!-- Scripts -->
+  <script src="assets/js/auth.js"></script>
   <script>
-  function switchTab(type) {
-    const loginForm = document.getElementById('page-login-form');
-    const registerForm = document.getElementById('page-register-form');
-    const btnLogin = document.getElementById('tab-btn-signin');
-    const btnRegister = document.getElementById('tab-btn-signup');
+    // Tab Switching
+    function showAuthTab(tab) {
+      document.getElementById('form-login').style.display = tab === 'login' ? 'block' : 'none';
+      document.getElementById('form-register').style.display = tab === 'register' ? 'block' : 'none';
 
-    if (type === 'login') {
-      loginForm.style.display = 'block';
-      registerForm.style.display = 'none';
-      btnLogin.style.background = 'var(--primary-navy)';
-      btnLogin.style.color = '#fff';
-      btnRegister.style.background = 'transparent';
-      btnRegister.style.color = 'var(--text-muted)';
-    } else {
-      loginForm.style.display = 'none';
-      registerForm.style.display = 'block';
-      btnRegister.style.background = 'var(--primary-navy)';
-      btnRegister.style.color = '#fff';
-      btnLogin.style.background = 'transparent';
-      btnLogin.style.color = 'var(--text-muted)';
+      document.getElementById('tab-btn-login').classList.toggle('active', tab === 'login');
+      document.getElementById('tab-btn-register').classList.toggle('active', tab === 'register');
     }
-  }
 
-  function fillCreds(email, pass, role) {
-    document.getElementById('login-email').value = email;
-    document.getElementById('login-password').value = pass;
-    if (role === 'admin') {
-      document.getElementById('page-login-form').onsubmit = (e) => {
-        e.preventDefault();
-        window.location.href = 'admin/index.html';
-      };
-    } else {
-      document.getElementById('page-login-form').onsubmit = (e) => {
-        e.preventDefault();
-        window.location.href = 'my-bookings.html';
-      };
+    // Toggle Password Visibility
+    function togglePassVisibility(inputId, btn) {
+      const input = document.getElementById(inputId);
+      if (!input) return;
+      const isPass = input.type === 'password';
+      input.type = isPass ? 'text' : 'password';
+      btn.innerHTML = isPass ? '<i class="far fa-eye-slash"></i>' : '<i class="far fa-eye"></i>';
     }
-  }
+
+    // Floating Toast Notification
+    function showToast(message, type = 'info') {
+      const container = document.getElementById('auth-toasts');
+      if (!container) return;
+      const toast = document.createElement('div');
+      toast.className = `toast toast-${type}`;
+      toast.innerHTML = `<i class="fas ${type === 'success' ? 'fa-check-circle' : (type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle')}"></i> <span>${message}</span>`;
+      container.appendChild(toast);
+      setTimeout(() => toast.remove(), 4000);
+    }
+
+    // Get Redirect Target URL
+    function getRedirectTarget() {
+      const params = new URLSearchParams(window.location.search);
+      const target = params.get('redirect');
+      return target ? decodeURIComponent(target) : 'index.html';
+    }
+
+    // 1. Handle Login Submit
+    async function handleLoginSubmit(e) {
+      e.preventDefault();
+      const identifier = document.getElementById('login-identifier').value.trim();
+      const password = document.getElementById('login-password').value;
+      const btn = document.getElementById('btn-login-submit');
+
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Authenticating...';
+
+      try {
+        let loggedInUser = null;
+        try {
+          const res = await fetch('api/auth.php', {
+            method: 'POST',
+            body: new URLSearchParams({
+              action: 'login',
+              email: identifier,
+              password: password
+            })
+          });
+          const data = await res.json();
+          if (data && data.success && data.user) {
+            loggedInUser = data.user;
+          }
+        } catch (apiErr) {}
+
+        // Check local registered accounts (works in both Python demo mode & offline)
+        if (!loggedInUser) {
+          const users = window.SpideyAuth.getRegisteredUsers();
+          const found = users.find(u => 
+            (u.email.toLowerCase() === identifier.toLowerCase() || (u.full_name && u.full_name.toLowerCase() === identifier.toLowerCase())) &&
+            u.password === password
+          );
+          if (found) {
+            const userCustomDp = (found.email && localStorage.getItem('userAvatar_' + found.email.toLowerCase())) || found.avatar || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80';
+            loggedInUser = {
+              id: found.id,
+              full_name: found.full_name,
+              email: found.email,
+              role: found.role || 'customer',
+              avatar: userCustomDp
+            };
+          }
+        }
+
+        if (loggedInUser) {
+          const userCustomDp = (loggedInUser.email && localStorage.getItem('userAvatar_' + loggedInUser.email.toLowerCase())) || loggedInUser.avatar;
+          if (userCustomDp) {
+            loggedInUser.avatar = userCustomDp;
+            try { localStorage.setItem('userAvatar', userCustomDp); } catch (e) {}
+          }
+          window.SpideyAuth.setAuthUser(loggedInUser);
+          showToast(`Welcome back, ${loggedInUser.full_name}! Opening SpidyWeb...`, 'success');
+          setTimeout(() => {
+            window.location.href = getRedirectTarget();
+          }, 600);
+        } else {
+          showToast('Invalid User ID / Email or Password. Please try again.', 'error');
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Sign In to SpidyWeb';
+        }
+      } catch (err) {
+        showToast('Login error: ' + err.message, 'error');
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Sign In to SpidyWeb';
+      }
+    }
+
+    // 2. Handle Registration Submit
+    async function handleRegisterSubmit(e) {
+      e.preventDefault();
+      const fullName = document.getElementById('reg-fullname').value.trim();
+      const email = document.getElementById('reg-email').value.trim();
+      const phone = document.getElementById('reg-phone').value.trim();
+      const pass = document.getElementById('reg-password').value;
+      const confirmPass = document.getElementById('reg-confirm-password').value;
+      const btn = document.getElementById('btn-register-submit');
+
+      if (pass !== confirmPass) {
+        showToast('Passwords do not match. Please re-enter identical passwords.', 'error');
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating Account & Storing in Database...';
+
+      const newUserObj = {
+        full_name: fullName,
+        email: email,
+        phone: phone,
+        password: pass,
+        role: 'customer',
+        avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80'
+      };
+
+      try {
+        // Send to PHP PDO Backend
+        try {
+          await fetch('api/auth.php', {
+            method: 'POST',
+            body: new URLSearchParams({
+              action: 'register',
+              full_name: fullName,
+              email: email,
+              phone: phone,
+              password: pass
+            })
+          });
+        } catch (apiErr) {}
+
+        // Save into local registered users catalog for permanent demo persistence
+        window.SpideyAuth.saveRegisteredUser(newUserObj);
+        window.SpideyAuth.setAuthUser(newUserObj);
+
+        showToast(`Account successfully created for ${fullName}! Opening website...`, 'success');
+        setTimeout(() => {
+          window.location.href = getRedirectTarget();
+        }, 800);
+      } catch (err) {
+        showToast('Registration failed: ' + err.message, 'error');
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-user-plus"></i> Create Account & Sign In';
+      }
+    }
+
+    // Clear stale session if user reached login page via logout
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('logout') || urlParams.get('logged_out')) {
+        localStorage.removeItem('spidey_auth_user');
+        sessionStorage.removeItem('spidey_auth_user');
+        showToast('You have been signed out successfully.', 'info');
+      }
+    });
   </script>
 </body>
 </html>

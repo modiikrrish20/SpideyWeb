@@ -23,6 +23,23 @@ WORKSPACE_DIR = os.path.dirname(os.path.abspath(__file__))
 def check_php():
     return shutil.which("php")
 
+MOCK_USERS = {
+    "modik3654@gmail.com": {
+        "id": 1,
+        "full_name": "Krrish Modi",
+        "email": "modik3654@gmail.com",
+        "password": "user123",
+        "role": "customer"
+    },
+    "hiten@gmail.com": {
+        "id": 2,
+        "full_name": "Hiten Patil",
+        "email": "hiten@gmail.com",
+        "password": "12345",
+        "role": "customer"
+    }
+}
+
 class SpidyWebRequestHandler(http.server.SimpleHTTPRequestHandler):
     def end_headers(self):
         self.send_header('Access-Control-Allow-Origin', '*')
@@ -77,6 +94,8 @@ class SpidyWebRequestHandler(http.server.SimpleHTTPRequestHandler):
                         "total_packages": 16
                     }
                 }
+            elif 'auth.php' in clean_path:
+                resp = {"success": True, "authenticated": False, "user": None}
             else:
                 resp = {"success": True, "data": []}
 
@@ -113,16 +132,74 @@ class SpidyWebRequestHandler(http.server.SimpleHTTPRequestHandler):
         mock_ref = f"SPY-2026-{random.randint(1000, 9999)}"
 
         if 'auth.php' in clean_path:
-            response = {
-                "success": True,
-                "message": "Authentication successful.",
-                "user": {
-                    "id": 1,
-                    "full_name": "Alex Mercer",
-                    "email": "alex@example.com",
+            form_data = urllib.parse.parse_qs(body.decode('utf-8', errors='ignore'))
+            action = form_data.get('action', [''])[0]
+            email = form_data.get('email', [''])[0].strip().lower()
+            password = form_data.get('password', [''])[0]
+            full_name = form_data.get('full_name', [''])[0].strip() or (email.split('@')[0] if email else 'Traveler')
+            otp = form_data.get('otp', [''])[0].strip()
+            new_password = form_data.get('new_password', [''])[0]
+
+            if action == 'register':
+                user_obj = {
+                    "id": len(MOCK_USERS) + 1,
+                    "full_name": full_name,
+                    "email": email,
+                    "password": password,
                     "role": "customer"
                 }
-            }
+                MOCK_USERS[email] = user_obj
+                response = {
+                    "success": True,
+                    "message": "Account created successfully!",
+                    "user": user_obj
+                }
+            elif action == 'login':
+                user = MOCK_USERS.get(email)
+                if user and user.get("password") == password:
+                    response = {
+                        "success": True,
+                        "message": "Login successful!",
+                        "user": user
+                    }
+                else:
+                    response = {
+                        "success": False,
+                        "error": "Invalid email or password."
+                    }
+            elif action == 'forgot_password':
+                gen_otp = str(random.randint(100000, 999999))
+                response = {
+                    "success": True,
+                    "message": "OTP generated successfully.",
+                    "otp": gen_otp,
+                    "email": email
+                }
+            elif action == 'reset_password':
+                if email in MOCK_USERS:
+                    MOCK_USERS[email]["password"] = new_password
+                else:
+                    MOCK_USERS[email] = {
+                        "id": len(MOCK_USERS) + 1,
+                        "full_name": email.split('@')[0],
+                        "email": email,
+                        "password": new_password,
+                        "role": "customer"
+                    }
+                response = {
+                    "success": True,
+                    "message": "Password updated successfully!"
+                }
+            elif action == 'logout':
+                response = {
+                    "success": True,
+                    "message": "Logged out successfully."
+                }
+            else:
+                response = {
+                    "success": True,
+                    "message": "Auth operation completed."
+                }
         elif 'admin.php' in clean_path:
             response = {
                 "success": True,

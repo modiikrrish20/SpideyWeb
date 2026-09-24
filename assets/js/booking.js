@@ -320,6 +320,7 @@ async function submitBooking() {
 
     if (data.success) {
       showToast('Congratulations! Your trip reservation is confirmed.', 'success');
+      saveBookingToLocalStorage(data.booking);
       renderBookingVoucher(data.booking);
     } else {
       if (data.require_login) {
@@ -345,8 +346,37 @@ async function submitBooking() {
       total_amount: bookingState.totalAmount,
       payment_method: bookingState.paymentMethod || 'UPI / GPay'
     };
+    saveBookingToLocalStorage(fallbackBooking);
     showToast('Payment verified! Your resort reservation is confirmed.', 'success');
     renderBookingVoucher(fallbackBooking);
+  }
+}
+
+/**
+ * Persist Booking to LocalStorage for Demo & Instant Reflection
+ */
+function saveBookingToLocalStorage(booking) {
+  try {
+    const list = JSON.parse(localStorage.getItem('spidey_bookings') || '[]');
+    const pkgTitle = currentBookingPackage ? currentBookingPackage.title : 'Selected Tour';
+    const pkgDest = currentBookingPackage ? currentBookingPackage.destination : 'Featured Destination';
+    const pkgId = bookingState.packageId || (currentBookingPackage ? currentBookingPackage.id : '1');
+
+    list.unshift({
+      booking_ref: booking.booking_ref,
+      package_id: pkgId,
+      package_title: pkgTitle,
+      destination: pkgDest,
+      travel_date: booking.travel_date || bookingState.travelDate,
+      adults: booking.adults || bookingState.adults,
+      children: booking.children || bookingState.children,
+      total_amount: booking.total_amount || bookingState.totalAmount,
+      payment_method: booking.payment_method || bookingState.paymentMethod || 'UPI / GPay',
+      created_at: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+    });
+    localStorage.setItem('spidey_bookings', JSON.stringify(list));
+  } catch (e) {
+    console.warn('Could not save booking to localStorage:', e);
   }
 }
 

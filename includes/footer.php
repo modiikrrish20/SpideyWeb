@@ -304,10 +304,49 @@
     </div>
   </div>
 
+  <!-- Profile Photo (DP) Changer Modal -->
+  <div class="modal-backdrop" id="avatar-modal">
+    <div class="modal-card" style="max-width: 500px;">
+      <div class="modal-header">
+        <h3 class="modal-title"><i class="fas fa-camera" style="color: var(--accent-coral);"></i> Change Profile Photo (DP)</h3>
+        <button class="modal-close" onclick="closeAvatarModal()">&times;</button>
+      </div>
+
+      <div class="modal-body" style="text-align: center;">
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Upload a custom photo from your device or choose from curated traveler avatars.</p>
+
+        <!-- Current DP Preview -->
+        <div style="margin-bottom: 24px;">
+          <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80" alt="Current DP" class="user-avatar-img" style="width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-coral); box-shadow: var(--shadow-md);">
+          <p style="font-size: 0.85rem; font-weight: 700; color: var(--primary-navy); margin-top: 8px;" class="user-name-display">Krrish Modi</p>
+        </div>
+
+        <!-- File Upload Button -->
+        <div style="margin-bottom: 24px;">
+          <label for="avatar-file-input" class="btn btn-primary btn-block" style="cursor: pointer;">
+            <i class="fas fa-upload"></i> Upload Photo From Computer
+          </label>
+          <input type="file" id="avatar-file-input" accept="image/*" style="display: none;">
+        </div>
+
+        <div style="border-top: 1px solid var(--border-light); padding-top: 18px;">
+          <p style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px;">Or Choose Preset Avatar</p>
+          <div class="avatar-preset-grid" style="justify-items: center;">
+            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80" class="avatar-preset-item" onclick="selectPresetAvatar(this.src)" alt="Preset 1">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" class="avatar-preset-item" onclick="selectPresetAvatar(this.src)" alt="Preset 2">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" class="avatar-preset-item" onclick="selectPresetAvatar(this.src)" alt="Preset 3">
+            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80" class="avatar-preset-item" onclick="selectPresetAvatar(this.src)" alt="Preset 4">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Toast Message Container -->
   <div class="toast-container"></div>
 
   <!-- Scripts -->
+  <script src="assets/js/auth.js"></script>
   <script src="assets/js/tour-dataset.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/booking.js"></script>

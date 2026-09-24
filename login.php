@@ -28,8 +28,8 @@ require_once __DIR__ . '/includes/header.php';
     
     <div style="text-align: center; margin-bottom: 28px;">
       <a href="index.php" class="logo" style="color: var(--primary-navy); justify-content: center; margin-bottom: 8px;">
-        <i class="fas fa-compass" style="color: var(--accent-coral);"></i>
-        <span>Wanderlust</span>
+        <i class="fas fa-spider" style="color: var(--accent-coral);"></i>
+        <span>SpidyWeb</span>
       </a>
       <p style="color: var(--text-muted); font-size: 0.9rem;">Sign in to access your bookings and travel vouchers</p>
     </div>
@@ -59,21 +59,6 @@ require_once __DIR__ . '/includes/header.php';
       <button type="submit" id="btn-login-submit" class="btn btn-primary btn-block btn-lg" style="margin-top: 10px;">
         <i class="fas fa-sign-in-alt"></i> Sign In
       </button>
-
-      <!-- Quick Demo Access Badges for Presentation -->
-      <div style="margin-top: 24px; padding-top: 18px; border-top: 1px dashed var(--border-light); text-align: center;">
-        <p style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px;">
-          <i class="fas fa-magic"></i> 1-Click Faculty Demo Credentials
-        </p>
-        <div class="demo-creds-grid" style="margin-top: 10px;">
-          <button type="button" class="btn btn-outline btn-sm btn-fill-cred" data-email="modik3654@gmail.com" data-pass="user123">
-            <i class="fas fa-user"></i> Krrish Modi (Customer)
-          </button>
-          <button type="button" class="btn btn-outline btn-sm btn-fill-cred" data-email="modik3654@gmail.com" data-pass="admin123" style="border-color: var(--accent-coral);">
-            <i class="fas fa-user-shield"></i> Krrish Modi (Admin)
-          </button>
-        </div>
-      </div>
     </form>
 
     <!-- Sign Up Form -->

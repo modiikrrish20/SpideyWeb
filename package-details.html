@@ -79,15 +79,15 @@
       <div class="nav-actions">
         <div class="user-profile-menu">
           <div class="user-avatar-btn">
-            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80" alt="Krrish Modi" class="user-avatar-img">
-            <span>Krrish Modi</span>
+            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80" alt="Avatar" id="header-dp" class="user-avatar-img">
+            <span class="user-name-display">Krrish Modi</span>
             <i class="fas fa-chevron-down" style="font-size: 0.7rem; opacity: 0.75;"></i>
           </div>
           <div class="user-dropdown">
             <div style="padding: 12px 18px; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; justify-content: space-between;">
               <div>
-                <p style="font-weight: 700; font-size: 0.9rem;">Krrish Modi</p>
-                <p style="font-size: 0.75rem; color: var(--text-muted);">modik3654@gmail.com</p>
+                <p style="font-weight: 700; font-size: 0.9rem;" id="nav-user-name" class="user-name-display">Krrish Modi</p>
+                <p style="font-size: 0.75rem; color: var(--text-muted);" id="nav-user-email" class="user-email-display">modik3654@gmail.com</p>
               </div>
               <button onclick="openAvatarModal()" class="btn btn-outline btn-sm" style="padding: 4px 8px; font-size: 0.75rem;" title="Change Profile Photo">
                 <i class="fas fa-camera"></i> Change DP
@@ -103,7 +103,7 @@
               <i class="fas fa-image"></i> Change Profile Photo
             </a>
             <div class="dropdown-divider"></div>
-            <a href="login.html" class="dropdown-item" style="color: #ef4444;">
+            <a href="javascript:void(0)" onclick="SpideyAuth.logoutUser(); return false;" class="dropdown-item" style="color: #ef4444;">
               <i class="fas fa-sign-out-alt"></i> Logout / Switch User
             </a>
           </div>
@@ -570,7 +570,7 @@
 
         <div style="margin-bottom: 24px;">
           <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80" alt="Current DP" class="user-avatar-img" style="width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-coral); box-shadow: var(--shadow-md);">
-          <p style="font-size: 0.85rem; font-weight: 700; color: var(--primary-navy); margin-top: 8px;">Krrish Modi</p>
+          <p style="font-size: 0.85rem; font-weight: 700; color: var(--primary-navy); margin-top: 8px;" class="user-name-display">Krrish Modi</p>
         </div>
 
         <div style="margin-bottom: 24px;">
@@ -601,6 +601,7 @@
   </footer>
 
   <div class="toast-container"></div>
+  <script src="assets/js/auth.js"></script>
   <script src="assets/js/tour-dataset.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/booking.js"></script>

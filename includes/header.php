@@ -95,14 +95,14 @@ $currentPage = basename($_SERVER['PHP_SELF'], '.php');
         <?php if ($currentUser): ?>
           <div class="user-profile-menu">
             <div class="user-avatar-btn">
-              <img src="<?php echo htmlspecialchars($currentUser['avatar']); ?>" alt="Avatar">
-              <span><?php echo htmlspecialchars(explode(' ', $currentUser['full_name'])[0]); ?></span>
+              <img src="<?php echo htmlspecialchars($currentUser['avatar']); ?>" alt="Avatar" id="header-dp" class="user-avatar-img">
+              <span class="user-name-display"><?php echo htmlspecialchars(explode(' ', $currentUser['full_name'])[0]); ?></span>
               <i class="fas fa-chevron-down" style="font-size: 0.7rem; opacity: 0.75;"></i>
             </div>
             <div class="user-dropdown">
               <div style="padding: 10px 18px; border-bottom: 1px solid var(--border-light);">
-                <p style="font-weight: 700; font-size: 0.9rem;"><?php echo htmlspecialchars($currentUser['full_name']); ?></p>
-                <p style="font-size: 0.75rem; color: var(--text-muted);"><?php echo htmlspecialchars($currentUser['email']); ?></p>
+                <p style="font-weight: 700; font-size: 0.9rem;" id="nav-user-name" class="user-name-display"><?php echo htmlspecialchars($currentUser['full_name']); ?></p>
+                <p style="font-size: 0.75rem; color: var(--text-muted);" id="nav-user-email" class="user-email-display"><?php echo htmlspecialchars($currentUser['email']); ?></p>
               </div>
               <a href="my-bookings.php" class="dropdown-item">
                 <i class="fas fa-suitcase-rolling"></i> My Bookings

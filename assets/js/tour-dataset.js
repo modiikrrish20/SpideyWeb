@@ -412,7 +412,7 @@ const TOUR_DESTINATIONS_DATA = {
         comment: "The Alleppey private houseboat was the highlight of our family holiday! Fresh Karimeen fish fry made on board, waking up to peaceful canals, and Munnar's endless tea gardens. Everything handled with 100% precision by SpidyWeb."
       },
       {
-        author: "Hiten Patel",
+        author: "Hiten Patil",
         location: "Surat, Gujarat",
         date: "July 2026",
         rating: 5,
@@ -819,7 +819,7 @@ const TOUR_DESTINATIONS_DATA = {
 
     reviews: [
       {
-        author: "Hiten Patel",
+        author: "Hiten Patil",
         location: "Surat, Gujarat",
         date: "August 2026",
         rating: 5,

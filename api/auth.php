@@ -125,6 +125,68 @@ switch ($action) {
         }
         break;
 
+    case 'forgot_password':
+        $email = cleanInput($_POST['email'] ?? '');
+        if (empty($email)) {
+            jsonResponse(['success' => false, 'error' => 'Please enter your registered email address / User ID.'], 400);
+        }
+
+        $stmt = $db->prepare("SELECT id, full_name, email FROM users WHERE email = ? LIMIT 1");
+        $stmt->execute([$email]);
+        $user = $stmt->fetch();
+
+        if (!$user) {
+            jsonResponse(['success' => false, 'error' => 'No account found with this email / User ID.'], 404);
+        }
+
+        // Generate 6-digit verification OTP
+        $otp = (string)random_int(100000, 999999);
+        $_SESSION['reset_otp']   = $otp;
+        $_SESSION['reset_email'] = $email;
+        $_SESSION['reset_time']  = time();
+
+        jsonResponse([
+            'success' => true,
+            'message' => 'Password reset OTP code generated successfully.',
+            'otp'     => $otp,
+            'email'   => $email,
+            'user'    => $user['full_name']
+        ]);
+        break;
+
+    case 'reset_password':
+        $email       = cleanInput($_POST['email'] ?? '');
+        $otp         = cleanInput($_POST['otp'] ?? '');
+        $newPassword = $_POST['new_password'] ?? '';
+
+        if (empty($email) || empty($newPassword)) {
+            jsonResponse(['success' => false, 'error' => 'Email and new password are required.'], 400);
+        }
+
+        if (strlen($newPassword) < 6) {
+            jsonResponse(['success' => false, 'error' => 'Password must be at least 6 characters long.'], 400);
+        }
+
+        // Validate OTP if session exists
+        if (isset($_SESSION['reset_otp']) && isset($_SESSION['reset_email'])) {
+            if ($_SESSION['reset_email'] !== $email || (string)$_SESSION['reset_otp'] !== (string)$otp) {
+                jsonResponse(['success' => false, 'error' => 'Invalid or expired OTP verification code.'], 400);
+            }
+        }
+
+        $hashedPassword = password_hash($newPassword, PASSWORD_BCRYPT);
+        $updateStmt = $db->prepare("UPDATE users SET password = ? WHERE email = ?");
+        $updateStmt->execute([$hashedPassword, $email]);
+
+        // Clear reset session
+        unset($_SESSION['reset_otp'], $_SESSION['reset_email'], $_SESSION['reset_time']);
+
+        jsonResponse([
+            'success' => true,
+            'message' => 'Password has been reset successfully! You can now log in with your new password.'
+        ]);
+        break;
+
     default:
         jsonResponse(['success' => false, 'error' => 'Invalid auth action specified.'], 400);
         break;

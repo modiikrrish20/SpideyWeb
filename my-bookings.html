@@ -81,9 +81,30 @@
         <div class="user-profile-menu">
           <div class="user-avatar-btn">
             <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80"
-              alt="Avatar">
-            <span>Krrish Modi</span>
+              alt="Avatar" id="header-dp" class="user-avatar-img">
+            <span class="user-name-display">Krrish Modi</span>
             <i class="fas fa-chevron-down" style="font-size: 0.7rem; opacity: 0.75;"></i>
+          </div>
+          <div class="user-dropdown">
+            <div style="padding: 12px 18px; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; justify-content: space-between;">
+              <div>
+                <p style="font-weight: 700; font-size: 0.9rem;" id="nav-user-name" class="user-name-display">Krrish Modi</p>
+                <p style="font-size: 0.75rem; color: var(--text-muted);" id="nav-user-email" class="user-email-display">modik3654@gmail.com</p>
+              </div>
+              <button onclick="openAvatarModal()" class="btn btn-outline btn-sm" style="padding: 4px 8px; font-size: 0.75rem;" title="Change Profile Photo">
+                <i class="fas fa-camera"></i> Change DP
+              </button>
+            </div>
+            <a href="my-bookings.html" class="dropdown-item">
+              <i class="fas fa-suitcase-rolling"></i> My Bookings
+            </a>
+            <a href="admin/index.html" class="dropdown-item">
+              <i class="fas fa-chart-line"></i> Admin Dashboard
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="javascript:void(0)" onclick="SpideyAuth.logoutUser(); return false;" class="dropdown-item" style="color: #ef4444;">
+              <i class="fas fa-sign-out-alt"></i> Logout / Switch User
+            </a>
           </div>
         </div>
 
@@ -114,14 +135,14 @@
           </div>
           <div>
             <div style="display: flex; align-items: center; gap: 10px;">
-              <h1 style="font-size: 1.6rem; color: var(--primary-navy); margin-bottom: 4px;">Welcome, Krrish Modi</h1>
+              <h1 style="font-size: 1.6rem; color: var(--primary-navy); margin-bottom: 4px;" id="dashboard-welcome-heading">Welcome, <span class="user-name-display">Krrish Modi</span></h1>
               <button onclick="openAvatarModal()" class="btn btn-outline btn-sm"
                 style="padding: 4px 10px; font-size: 0.75rem; border-color: var(--accent-coral); color: var(--accent-coral);">
                 <i class="fas fa-camera"></i> Change DP
               </button>
             </div>
-            <p style="color: var(--text-muted); font-size: 0.9rem;">
-              <i class="fas fa-envelope"></i> modik3654@gmail.com &bull; <i class="fas fa-phone"></i> +91 98765 43210
+            <p style="color: var(--text-muted); font-size: 0.9rem;" id="dashboard-welcome-sub">
+              <i class="fas fa-envelope"></i> <span class="user-email-display">modik3654@gmail.com</span> &bull; <i class="fas fa-phone"></i> <span class="user-phone-display">+91 98765 43210</span>
               &bull; <span class="badge badge-teal">Verified Member</span>
             </p>
           </div>
@@ -236,7 +257,7 @@
 
   <footer class="footer">
     <div class="container" style="text-align: center;">
-      <p>&copy; 2026 SpidyWeb Tours & Travels. Customer account: Krrish Modi (modik3654@gmail.com).</p>
+      <p>&copy; 2026 SpidyWeb Tours & Travels. Customer account: <span class="user-name-display">Krrish Modi</span> (<span class="user-email-display">modik3654@gmail.com</span>).</p>
     </div>
   </footer>
 
@@ -259,6 +280,8 @@
       const airport = (pkg.geo && pkg.geo.airport) ? pkg.geo.airport : 'Nearest International Airport';
       const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}&travelmode=driving`;
 
+      const activeUser = (window.SpideyAuth && window.SpideyAuth.getAuthUser()) || { full_name: 'Krrish Modi', email: 'modik3654@gmail.com' };
+
       content.innerHTML = `
       <div class="voucher-card">
         <div class="voucher-header">
@@ -272,8 +295,8 @@
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; font-size: 0.9rem;">
           <div>
             <strong style="color: var(--text-muted);">Lead Traveler:</strong>
-            <p style="font-weight: 700; font-size: 1rem; color: var(--primary-navy);">Krrish Modi</p>
-            <span style="font-size: 0.8rem; color: var(--text-muted);">modik3654@gmail.com</span>
+            <p style="font-weight: 700; font-size: 1rem; color: var(--primary-navy);">${activeUser.full_name}</p>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">${activeUser.email}</span>
           </div>
           <div>
             <strong style="color: var(--text-muted);">Tour Package:</strong>
@@ -356,7 +379,7 @@
         </div>
 
         <div style="background: var(--bg-main); padding: 14px; border-radius: var(--radius-sm); font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px; border-left: 3px solid var(--accent-coral);">
-          <i class="fas fa-qrcode" style="color: var(--accent-coral); font-size: 1.1rem; margin-right: 6px;"></i> E-Ticket Voucher registered for <strong>Krrish Modi</strong>. Valid for hotel check-in and local sightseeing.
+          <i class="fas fa-qrcode" style="color: var(--accent-coral); font-size: 1.1rem; margin-right: 6px;"></i> E-Ticket Voucher registered for <strong>${activeUser.full_name}</strong>. Valid for hotel check-in and local sightseeing.
         </div>
 
         <div style="display: flex; gap: 12px; justify-content: flex-end; flex-wrap: wrap;">
@@ -462,6 +485,47 @@
       `;
       modal.classList.add('active');
     }
+
+    // Render custom bookings saved in localStorage for demo & instant reflection
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        const localList = JSON.parse(localStorage.getItem('spidey_bookings') || '[]');
+        const tbody = document.querySelector('.bookings-table tbody');
+        if (tbody && localList.length > 0) {
+          localList.forEach(b => {
+            const tr = document.createElement('tr');
+            const totalFormatted = typeof b.total_amount === 'number' ? '₹' + b.total_amount.toLocaleString('en-IN') : (String(b.total_amount).startsWith('₹') ? b.total_amount : '₹' + b.total_amount);
+            const guestsText = `${b.adults} Adults` + (b.children > 0 ? `, ${b.children} Children` : '');
+            const safeTitle = (b.package_title || 'Selected Tour').replace(/'/g, "\\'");
+            tr.innerHTML = `
+              <td><span style="font-family: monospace; font-weight: 700; color: var(--accent-coral);">${b.booking_ref}</span></td>
+              <td>
+                <strong>${b.package_title}</strong>
+                <div style="font-size: 0.8rem; color: var(--text-muted);">${b.destination || 'Featured Destination'}</div>
+              </td>
+              <td>${b.travel_date}</td>
+              <td>${guestsText}</td>
+              <td><strong style="color: var(--accent-green); font-size: 1.05rem;">${totalFormatted}</strong></td>
+              <td>${b.payment_method || 'UPI / GPay'}</td>
+              <td><span class="badge badge-green"><i class="fas fa-check-circle"></i> Confirmed</span></td>
+              <td>
+                <div style="display: flex; gap: 8px;">
+                  <button class="btn btn-outline-dark btn-sm" onclick="showVoucher('${b.booking_ref}', '${safeTitle}', '${b.travel_date}', '${guestsText}', '${totalFormatted}', '${b.payment_method || 'UPI'}', '${b.package_id || '1'}')">
+                    <i class="fas fa-ticket-alt"></i> E-Ticket
+                  </button>
+                  <button class="btn btn-outline btn-sm" style="color: #1a73e8; border-color: #93c5fd;" onclick="showDirectionsModal('${b.package_id || '1'}')">
+                    <i class="fas fa-location-arrow"></i> Directions
+                  </button>
+                </div>
+              </td>
+            `;
+            tbody.prepend(tr);
+          });
+        }
+      } catch (err) {
+        console.warn('Error loading custom bookings:', err);
+      }
+    });
   </script>
 
   <!-- Profile Photo (DP) Changer Modal -->
@@ -478,7 +542,7 @@
         <!-- Current DP Preview -->
         <div style="margin-bottom: 24px;">
           <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80" alt="Current DP" class="user-avatar-img" style="width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-coral); box-shadow: var(--shadow-md);">
-          <p style="font-size: 0.85rem; font-weight: 700; color: var(--primary-navy); margin-top: 8px;">Krrish Modi</p>
+          <p style="font-size: 0.85rem; font-weight: 700; color: var(--primary-navy); margin-top: 8px;" class="user-name-display">Krrish Modi</p>
         </div>
 
         <!-- File Upload Button -->
@@ -503,6 +567,7 @@
   </div>
 
   <div class="toast-container"></div>
+  <script src="assets/js/auth.js"></script>
   <script src="assets/js/tour-dataset.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
