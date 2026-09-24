@@ -259,7 +259,6 @@ SpideyWeb/
 │   └── db.php                      # PDO MySQL database connector & auto-table seeder
 ├── database.sql                    # Full MySQL database schema and seed data
 ├── run_demo.py                     # Python zero-dependency local dev server runner
-├── FACULTY_EXPLANATION_GUIDE.md    # 15+ Viva questions, answers, and examiner rubric
 └── PROJECT_DOCUMENTATION.md        # Academic report with ER Diagram, DFDs, and test cases
 ```
 
